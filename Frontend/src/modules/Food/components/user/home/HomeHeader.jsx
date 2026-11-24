@@ -1,3 +1,4 @@
+import { TAXI_ENABLED } from "@/config/features"
 import { useState, useEffect, useMemo } from 'react';
 
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -212,7 +213,7 @@ export default function HomeHeader({
               <img src={foodIcon} alt="Food" className="w-4 h-4 object-contain" />
               <span className="font-extrabold text-[11px] tracking-wide">Food</span>
             </button>
-            <button
+            {TAXI_ENABLED && <button
               onClick={() => navigate('/taxi/user')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition-all duration-300 ${
                 routeLocation.pathname.includes('/taxi')
@@ -222,7 +223,7 @@ export default function HomeHeader({
             >
               <img src={taxiIcon} alt="Rides" className="w-5 h-5 object-contain -ml-0.5" />
               <span className="font-extrabold text-[11px] tracking-wide">Rides</span>
-            </button>
+            </button>}
           </div>
 
           {/* Right: Notifications & Profile/Veg */}

@@ -117,9 +117,14 @@ const startServer = async () => {
         // SP controllers reach it via require('../../sockets').getIO(); the legacy
         // req.app.get('io') call sites are served by the app.set below. Master itself
         // never reads app.get('io'), so this key is free.
-        const { configureSPSocketServer } = await import('./src/modules/serviceProvider/sockets/index.js');
-        const spNamespace = configureSPSocketServer(getIO());
-        app.set('io', spNamespace);
+        // SERVICE_PROVIDER_ENABLED=false (a Food + Quick Commerce site) skips it.
+        const spEnabled = process.env.SERVICE_PROVIDER_ENABLED !== 'false';
+        let spNamespace = null;
+        if (spEnabled) {
+            const { configureSPSocketServer } = await import('./src/modules/serviceProvider/sockets/index.js');
+            spNamespace = configureSPSocketServer(getIO());
+            app.set('io', spNamespace);
+        }
 
         // 3d. Quick-commerce socket handlers, on namespace /qc. Until this line
         // existed, QC's initSocket was never called at all and every QC realtime
@@ -207,8 +212,10 @@ const startServer = async () => {
                 return;
             }
             runWatchdog();
-            ensureBusDaysUpdated();
-            seedBusDriverInDb();
+            if (process.env.TAXI_ENABLED !== 'false') {
+                ensureBusDaysUpdated();
+                seedBusDriverInDb();
+            }
         };
 
         if (mongoose.connection.readyState === 1) {
@@ -268,7 +275,7 @@ const startServer = async () => {
 
         // 6. Start the HTTP server - Bind immediately to PORT
         const PORT = process.env.PORT || 5000;
-        server = httpServer.listen(PORT, '0.0.0.0', () => {
+        server = httpServer.listen(PORT, process.env.HOST || '0.0.0.0', () => {
             logger.info('=== STARTUP DIAGNOSTICS ===');
             logger.info(`Node Environment: ${config.nodeEnv}`);
             logger.info(`Port: ${PORT}`);
@@ -318,7 +325,7 @@ const startServer = async () => {
             // scheduler has no competing instance. Tying it to the same switch
             // meant SP dispatch was collateral damage: no wave promotion, no
             // notifiedWorkers, and no realtime alert to any vendor or worker.
-            if (process.env.SP_SCHEDULER_ENABLED !== 'false') {
+            if (spEnabled && process.env.SP_SCHEDULER_ENABLED !== 'false') {
                 startSPScheduler();
             } else {
                 logger.warn('SP_SCHEDULER_ENABLED=false — SP wave alerting is OFF; partners will only see work by polling');

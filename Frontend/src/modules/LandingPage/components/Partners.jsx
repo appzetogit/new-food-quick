@@ -1,3 +1,4 @@
+import { TAXI_ENABLED } from "@/config/features"
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Car, Store, ArrowRight, CheckCircle2, Zap } from 'lucide-react'
@@ -25,10 +26,10 @@ const partners = [
     ctaText: 'Become a partner', ctaHref: '/partner',
     color: '#FFB800', gradient: 'from-[#FFB800] to-[#ff5100]',
   }
-]
+].filter((p) => TAXI_ENABLED || p.type !== 'driver')
 
 export default function Partners() {
-  const [activeTab, setActiveTab] = useState('driver')
+  const [activeTab, setActiveTab] = useState(partners[0].type)
   const sectionRef = useRef(null)
   const headerRef = useRef(null)
   const cardRef = useRef(null)

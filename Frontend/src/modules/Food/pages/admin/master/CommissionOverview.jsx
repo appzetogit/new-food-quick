@@ -1,3 +1,4 @@
+import { isServiceOn, MEDICAL_ENABLED } from "@/config/features"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { Loader2, RefreshCw, ExternalLink, Search, AlertTriangle } from "lucide-react"
@@ -130,7 +131,7 @@ export default function CommissionOverview() {
   }, [load])
 
   const services = useMemo(
-    () => (data?.services || []).filter((s) => s.key !== "services" || SERVICE_PROVIDER_ENABLED),
+    () => (data?.services || []).filter((s) => isServiceOn(s.key)).filter((s) => s.key !== "services" || SERVICE_PROVIDER_ENABLED),
     [data],
   )
   const query = q.trim().toLowerCase()
@@ -193,7 +194,7 @@ export default function CommissionOverview() {
                   <Summary s={s.summary} />
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {s.key === "quick" && <EditLink to="/admin/medical/commission">Medical default</EditLink>}
+                  {MEDICAL_ENABLED && s.key === "quick" && <EditLink to="/admin/medical/commission">Medical default</EditLink>}
                   <EditLink to={s.editPath}>Change rates</EditLink>
                 </div>
               </div>

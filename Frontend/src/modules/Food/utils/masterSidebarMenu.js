@@ -1,4 +1,4 @@
-import { SERVICE_PROVIDER_ENABLED } from "@/config/features"
+import { SERVICE_PROVIDER_ENABLED, TAXI_ENABLED } from "@/config/features"
 
 /**
  * The Master panel's own menu: everything that is managed once for the whole
@@ -26,7 +26,17 @@ import { SERVICE_PROVIDER_ENABLED } from "@/config/features"
 
 const sp = (items) => (SERVICE_PROVIDER_ENABLED ? items : [])
 
-export const masterSidebarMenu = [
+const isTaxiLink = ({ path = "" }) => path.startsWith("/taxi/") || path.startsWith("/admin/master/taxi-drivers")
+const visible = (items) =>
+  items
+    .filter((item) => TAXI_ENABLED || !isTaxiLink(item))
+    .map((item) => ({
+      ...item,
+      ...(item.items ? { items: visible(item.items) } : {}),
+      ...(item.subItems ? { subItems: visible(item.subItems) } : {}),
+    }))
+
+export const masterSidebarMenu = visible([
   {
     type: "section",
     label: "MASTER",
@@ -179,7 +189,7 @@ export const masterSidebarMenu = [
         subItems: [
           // Customers are one `users` collection for every app, so one list.
           { label: "All Customers", path: "/admin/master/customers", countKey: "masterCustomers" },
-          { label: "Account Deletion Requests", path: "/taxi/admin/users/delete-requests", alertKey: "masterDeletionRequests" },
+          { label: "Account Deletion Requests", path: "/admin/master/deletion-requests", alertKey: "masterDeletionRequests" },
           ...sp([{ label: "Services · Users", path: "/admin/sp/users/all" }]),
         ],
       },
@@ -203,4 +213,4 @@ export const masterSidebarMenu = [
       },
     ],
   },
-]
+])

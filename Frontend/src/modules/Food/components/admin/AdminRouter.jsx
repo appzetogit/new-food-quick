@@ -42,6 +42,7 @@ const MasterPromotions = lazy(() => import("@food/pages/admin/master/PromoCeilin
 const OrderBatching = lazy(() => import("@food/pages/admin/master/OrderBatching"))
 // Master's own Delivery Management pages: the same screens as the Food and Taxi
 // panels, opened inside Master (links between them stay in Master).
+const MasterDeletionRequests = lazy(() => import("@/modules/Taxi/modules/admin/pages/users/DeleteRequestUsers"))
 const TaxiDriverList = lazy(() => import("@/modules/Taxi/modules/admin/pages/drivers/DriverList"))
 const TaxiPendingDrivers = lazy(() => import("@/modules/Taxi/modules/admin/pages/drivers/PendingDrivers"))
 const TaxiDriverDetails = lazy(() => import("@/modules/Taxi/modules/admin/pages/drivers/DriverDetails"))
@@ -182,7 +183,7 @@ const EditRestaurant = lazy(() => import("@food/pages/admin/restaurant/EditResta
 const AdminLogin = lazy(() => import("@food/pages/admin/auth/AdminLogin"));
 const AdminSignup = lazy(() => import("@food/pages/admin/auth/AdminSignup"));
 const AdminForgotPassword = lazy(() => import("@food/pages/admin/auth/AdminForgotPassword"));
-import { SERVICE_PROVIDER_ENABLED } from "@/config/features";
+import { SERVICE_PROVIDER_ENABLED, TAXI_ENABLED, MEDICAL_ENABLED } from "@/config/features";
 // The Services admin, on for sites that set VITE_ENABLE_SERVICE_PROVIDER
 // (config/features.js). Lazy, so a site with it off never downloads it.
 const SPAdminRoutes = lazy(() => import("@sp/admin/routes"));
@@ -485,11 +486,12 @@ export default function AdminRouter() {
           <Route path="master/order-batching" element={<OrderBatching />} />
           <Route path="master/delivery-partners" element={<DeliverymanList />} />
           <Route path="master/delivery-partners/join-requests" element={<JoinRequest />} />
-          <Route path="master/taxi-drivers" element={<TaxiDriverList />} />
-          <Route path="master/taxi-drivers/pending" element={<TaxiPendingDrivers />} />
-          <Route path="master/taxi-drivers/create" element={<TaxiDriverCreate />} />
-          <Route path="master/taxi-drivers/edit/:id" element={<TaxiDriverEdit />} />
-          <Route path="master/taxi-drivers/:id" element={<TaxiDriverDetails />} />
+          {TAXI_ENABLED && <Route path="master/taxi-drivers" element={<TaxiDriverList />} />}
+          {TAXI_ENABLED && <Route path="master/taxi-drivers/pending" element={<TaxiPendingDrivers />} />}
+          {TAXI_ENABLED && <Route path="master/taxi-drivers/create" element={<TaxiDriverCreate />} />}
+          {TAXI_ENABLED && <Route path="master/taxi-drivers/edit/:id" element={<TaxiDriverEdit />} />}
+          {TAXI_ENABLED && <Route path="master/taxi-drivers/:id" element={<TaxiDriverDetails />} />}
+          <Route path="master/deletion-requests" element={<MasterDeletionRequests />} />
           <Route path="master/partner-documents" element={<PartnerDocuments />} />
           <Route path="master/partner-documents/create" element={<PartnerDocumentForm />} />
           <Route path="master/partner-documents/edit/:id" element={<PartnerDocumentForm />} />
@@ -502,7 +504,7 @@ export default function AdminRouter() {
           <Route path="food/*">{verticalAdminRoutes}</Route>
 
           {/* TAXI ADMIN - Redirect to integrated taxi admin */}
-          <Route path="taxi/*" element={<Navigate to="/taxi/admin/dashboard" replace />} />
+          <Route path="taxi/*" element={<Navigate to={TAXI_ENABLED ? "/taxi/admin/dashboard" : "/admin/food"} replace />} />
 
 
                     {/* QUICK COMMERCE ADMIN - the same screens, pointed at /v1/qc/admin. */}
@@ -537,7 +539,7 @@ export default function AdminRouter() {
               narrowing is one request parameter, added in the axios interceptor
               for this path and enforced by the server, which refuses a store
               type it does not recognise rather than widening the list. */}
-          <Route
+          {MEDICAL_ENABLED && <Route
             path="medical/*"
             element={
               <VerticalVocabulary vertical={VERTICAL.MEDICAL}>
@@ -555,7 +557,7 @@ export default function AdminRouter() {
             <Route path="requests" element={<MedicalRequests />} />
             <Route path="verification" element={<PharmacyVerification />} />
             <Route path="commission" element={<MedicalCommission />} />
-          </Route>
+          </Route>}
         </Route>
 
         {/* Redirect unknown admin routes to food admin */}

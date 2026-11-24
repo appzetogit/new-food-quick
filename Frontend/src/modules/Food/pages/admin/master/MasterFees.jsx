@@ -1,3 +1,4 @@
+import { TAXI_ENABLED } from "@/config/features"
 import { useState, useEffect, useCallback } from "react"
 import { Link } from "react-router-dom"
 import { platformSettingsAPI } from "@food/api"
@@ -30,7 +31,7 @@ const OWN_SCREENS = [
   { label: "Food fee settings", path: "/admin/food/fee-settings" },
   { label: "Quick & Medical fee settings", path: "/admin/quick-commerce/fee-settings" },
   { label: "Taxi platform fee (per vehicle)", path: "/taxi/admin/pricing/set-price" },
-]
+].filter((s) => TAXI_ENABLED || !s.path.startsWith("/taxi/"))
 
 const inputCls =
   "w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm tabular-nums focus:border-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900/10 disabled:bg-neutral-50 disabled:text-neutral-400"
@@ -204,10 +205,10 @@ export default function MasterFees() {
                     </tr>
                   ))
                 )}
-                <tr>
+                {TAXI_ENABLED && <tr>
                   <td className="px-5 py-3 font-medium text-neutral-900">Taxi</td>
                   <td colSpan={2} className="px-3 py-3 text-neutral-500">Set per vehicle on Taxi&rsquo;s price screen</td>
-                </tr>
+                </tr>}
               </tbody>
             </table>
           </div>

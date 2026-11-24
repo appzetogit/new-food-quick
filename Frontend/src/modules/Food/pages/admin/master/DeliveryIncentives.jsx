@@ -1,3 +1,4 @@
+import { isServiceOn, TAXI_ENABLED, MEDICAL_ENABLED } from "@/config/features"
 import { useState, useEffect, useCallback } from "react"
 import { incentiveRulesAPI } from "@food/api"
 import { toast } from "sonner"
@@ -24,8 +25,8 @@ import TablePagination, { usePagination, SCROLL_TABLE_CLASS, STICKY_THEAD_CLASS 
 const SEGMENTS = [
   {
     id: "foodAndQuick",
-    label: "Food, Daily needs, Medical & Bike parcel",
-    hint: "Food + Daily needs + Medical + Bike parcel riders — food, groceries, medicine and parcels on a 2-wheeler all count toward the same ladder.",
+    label: TAXI_ENABLED || MEDICAL_ENABLED ? "Food, Daily needs, Medical & Bike parcel" : "Food & Daily needs",
+    hint: !(TAXI_ENABLED || MEDICAL_ENABLED) ? "Food and grocery deliveries count toward the same ladder." : "Food + Daily needs + Medical + Bike parcel riders — food, groceries, medicine and parcels on a 2-wheeler all count toward the same ladder.",
     // A zone ladder can be for a Food, Quick or Medical zone: whichever the order
     // (or the bike parcel's pickup) is in.
     zoneModules: ["food", "quickCommerce", "medical"],
@@ -43,7 +44,7 @@ const SEGMENTS = [
     hint: "Parcel and porter jobs on anything bigger than a 2-wheeler — tempo, van, truck. Bike parcels count on the food ladder instead.",
     zoneModules: ["taxi"],
   },
-]
+].filter((s) => isServiceOn(s.id))
 
 const inputCls =
   "w-full rounded-lg border border-neutral-300 bg-white px-2.5 py-1.5 text-sm tabular-nums focus:border-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900/10 disabled:bg-neutral-50"

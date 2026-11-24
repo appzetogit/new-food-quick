@@ -1,3 +1,4 @@
+import { isServiceOn } from "@/config/features"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { Loader2, RefreshCw, ChevronDown } from "lucide-react"
 import { platformPnlAPI } from "@food/api"
@@ -148,7 +149,7 @@ export default function PlatformEarnings() {
 
   // Services is only listed where the module is switched on, or where it has earned something.
   const services = useMemo(
-    () => (data?.services || []).filter((s) => s.key !== "services" || SERVICE_PROVIDER_ENABLED || s.count > 0),
+    () => (data?.services || []).filter((s) => isServiceOn(s.key)).filter((s) => s.key !== "services" || SERVICE_PROVIDER_ENABLED || s.count > 0),
     [data],
   )
   const totals = data?.totals

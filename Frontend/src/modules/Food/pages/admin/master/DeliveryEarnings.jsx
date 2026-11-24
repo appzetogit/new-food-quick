@@ -1,3 +1,4 @@
+import { isServiceOn } from "@/config/features"
 import { useState, useEffect, useCallback, useMemo } from "react"
 import { Link } from "react-router-dom"
 import { platformSettingsAPI } from "@food/api"
@@ -38,7 +39,7 @@ const MODULES = [
   { id: "medical", level: "vertical", label: "Medical", hint: "Overrides it for pharmacy orders" },
   // Rides are priced by base fare, per km and per minute in the Taxi panel.
   { id: "taxi", level: "vertical", label: "Taxi", hint: "Driver incentive only — ride fares are set in the Taxi panel", incentiveOnly: true },
-]
+].filter((m) => isServiceOn(m.id))
 
 /**
  * Whose zones the zone picker lists for each tab. A zone value is keyed by the

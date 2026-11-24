@@ -1,10 +1,11 @@
+import { isServiceOn } from "@/config/features"
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { UtensilsCrossed, Car, ArrowRight, CheckCircle2, Zap, Clock, Star } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import k9Logo from '../assets/k9-logo.png'
+import k9Logo from '../assets/aodo-logo.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -33,7 +34,7 @@ const selectionOptions = [
     path: '/taxi/user',
     highlights: ['SOS dashboard integration', 'Shared ride fare splitting', 'Premium standard vehicles'],
   }
-]
+].filter((o) => isServiceOn(o.id))
 
 export default function Ecosystem() {
   const navigate = useNavigate()

@@ -64,10 +64,10 @@ import { adminSidebarMenu } from "@food/utils/adminSidebarMenu"
 import { masterSidebarMenu } from "@food/utils/masterSidebarMenu"
 import { rulesFor, VERTICAL } from "@food/utils/verticalVocabulary"
 import { getCachedSettings, loadBusinessSettings } from "@food/utils/businessSettings"
-import quickSpicyLogo from "@food/assets/k9-logo.jpg"
+import quickSpicyLogo from "@food/assets/aodo-logo.png"
 import { useSettings } from "../../../Taxi/shared/context/SettingsContext"
 import { useAdminAccess, filterMenuForAccess, hasPanel, isRestricted } from "@food/utils/adminAccess"
-import { SERVICE_PROVIDER_ENABLED } from "@/config/features"
+import { SERVICE_PROVIDER_ENABLED, TAXI_ENABLED, MEDICAL_ENABLED } from "@/config/features"
 /**
  * Which service tabs this admin may see.
  *
@@ -444,14 +444,15 @@ export default function AdminSidebar({ isOpen = false, onClose, onCollapseChange
   const serviceAccess = isRestricted(access)
     ? {
         food: hasPanel(access, "food"),
-        taxi: hasPanel(access, "taxi"),
+        taxi: TAXI_ENABLED && hasPanel(access, "taxi"),
         serviceProvider: SERVICE_PROVIDER_ENABLED && hasPanel(access, "serviceProvider"),
         quickCommerce: hasPanel(access, "quickCommerce"),
-        medical: hasPanel(access, "medical"),
+        medical: MEDICAL_ENABLED && hasPanel(access, "medical"),
       }
     : {
         ...storedAccess,
-        medical: storedAccess.quickCommerce,
+        taxi: TAXI_ENABLED && storedAccess.taxi,
+        medical: MEDICAL_ENABLED && storedAccess.quickCommerce,
         // Off on a site that has not switched the module on, whatever the
         // stored session says -- the tab would lead to a route that is absent.
         serviceProvider: SERVICE_PROVIDER_ENABLED && storedAccess.serviceProvider !== false,

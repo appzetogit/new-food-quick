@@ -7,7 +7,8 @@ const NATIVE_LAST_ROUTE_KEY = 'native_last_route'
 
 // Eagerly import the Food and Taxi service modules for fast, smooth transitions without reloads
 import FoodApp from '../modules/Food/routes'
-import TaxiApp from '../modules/Taxi/TaxiApp'
+import { TAXI_ENABLED } from '../config/features'
+const TaxiApp = TAXI_ENABLED ? lazy(() => import('../modules/Taxi/TaxiApp')) : null
 const AuthApp = lazy(() => import('../modules/auth/routes'))
 const HelpSupportPage = lazy(() => import('../modules/auth/pages/HelpSupportPage'))
 const TermsPage = lazy(() => import('../modules/auth/pages/TermsPage'))
@@ -157,7 +158,7 @@ const AppRoutes = () => {
         <Route path="/food/*" element={<FoodAppWrapper />} />
 
         {/* Taxi Module */}
-        <Route path="/taxi/*" element={<TaxiAppWrapper />} />
+        {TAXI_ENABLED && <Route path="/taxi/*" element={<TaxiAppWrapper />} />}
 
         {/* Global Admin Portal - AdminRouter handles its own protection for sub-routes */}
         <Route

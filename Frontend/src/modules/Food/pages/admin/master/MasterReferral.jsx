@@ -1,3 +1,4 @@
+import { TAXI_ENABLED, isServiceOn } from "@/config/features"
 import { useState, useEffect, useCallback } from "react"
 import { Link } from "react-router-dom"
 import { platformSettingsAPI } from "@food/api"
@@ -28,7 +29,7 @@ const SCOPES = [
   { id: "food", level: "vertical", label: "Food" },
   { id: "quickCommerce", level: "vertical", label: "Quick & Medical" },
   { id: "taxi", level: "vertical", label: "Taxi" },
-]
+].filter((s) => isServiceOn(s.id))
 
 const SERVICE_LABEL = { food: "Food", quickCommerce: "Quick & Medical", taxi: "Taxi" }
 
@@ -38,7 +39,7 @@ const OWN_SCREENS = [
   { label: "Quick & Medical referral rules", path: "/admin/quick-commerce/referral-settings" },
   { label: "Taxi customer referral rules", path: "/taxi/admin/referrals/user-settings" },
   { label: "Taxi driver referral rules", path: "/taxi/admin/referrals/driver-settings" },
-]
+].filter((s) => TAXI_ENABLED || !s.path.startsWith("/taxi/"))
 
 const inputCls =
   "w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm tabular-nums focus:border-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900/10 disabled:bg-neutral-50 disabled:text-neutral-400"

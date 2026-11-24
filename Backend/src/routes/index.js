@@ -234,7 +234,9 @@ router.use('/v1/qc', requireModuleEnabled(MODULES.QUICK_COMMERCE), qcRouter);
 
 // ─── Service-Provider (Homster) ────────────────────────────────────────────
 // Canonical prefix.
-router.use('/v1/sp', requireModuleEnabled(MODULES.SERVICE_PROVIDER), spRouter);
+// Off on a Food + Quick Commerce site: SERVICE_PROVIDER_ENABLED=false.
+const SP_ENABLED = process.env.SERVICE_PROVIDER_ENABLED !== 'false';
+if (SP_ENABLED) router.use('/v1/sp', requireModuleEnabled(MODULES.SERVICE_PROVIDER), spRouter);
 
 // Legacy prefixes the shipped Flutter / seller-APK builds still call. These were
 // top-level in the old standalone server.js and none of them collide with the
@@ -245,7 +247,7 @@ router.use('/v1/sp', requireModuleEnabled(MODULES.SERVICE_PROVIDER), spRouter);
 // so the stripped path would never match. This hands spRouter the full path.
 // Registered last, so every master route above still wins on any overlap.
 const SP_LEGACY_PREFIXES = ['/users', '/user', '/vendors', '/workers', '/admin', '/bookings', '/payments', '/notifications', '/public', '/scrap', '/image'];
-router.use((req, res, next) => {
+if (SP_ENABLED) router.use((req, res, next) => {
     const matched = SP_LEGACY_PREFIXES.some((p) => req.path === p || req.path.startsWith(`${p}/`));
     return matched ? spRouter(req, res, next) : next();
 });

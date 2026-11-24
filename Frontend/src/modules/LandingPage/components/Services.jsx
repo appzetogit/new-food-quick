@@ -1,3 +1,4 @@
+import { TAXI_ENABLED } from "@/config/features"
 import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -43,7 +44,12 @@ const services = [
     bg: LANDING_THEME.blue.bg, accent: LANDING_THEME.blue.primary, secondary: LANDING_THEME.blue.accent,
     gradient: 'from-[#1d4ed8] to-[#10b981]'
   },
-]
+].filter((s) => TAXI_ENABLED || s.icon === Utensils).concat(TAXI_ENABLED ? [] : [{
+  icon: Package, title: 'Quick Commerce',
+  description: 'Groceries and daily essentials from nearby stores, delivered fast.',
+  bg: LANDING_THEME.blue.bg, accent: LANDING_THEME.blue.primary, secondary: LANDING_THEME.blue.accent,
+  gradient: 'from-[#1d4ed8] to-[#10b981]'
+}])
 
 function ServiceCard({ service }) {
   const cardRef = useRef(null)

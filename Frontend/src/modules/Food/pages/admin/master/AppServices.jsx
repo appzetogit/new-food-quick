@@ -1,3 +1,4 @@
+import { isServiceOn } from "@/config/features"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { appServicesAPI } from "@food/api"
 import { Switch } from "@food/components/ui/switch"
@@ -163,7 +164,7 @@ export default function AppServices() {
   const [savingOff, setSavingOff] = useState(false)
 
   const apply = (res) => {
-    const list = res?.data?.data?.services || res?.data?.services || []
+    const list = (res?.data?.data?.services || res?.data?.services || []).filter((s) => isServiceOn(s.key))
     setServices(Array.isArray(list) ? list : [])
   }
 

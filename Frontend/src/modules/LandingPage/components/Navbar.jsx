@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import k9Logo from '../assets/k9-logo.png'
+import k9Logo from '../assets/aodo-logo.png'
 import { useSettings } from '../../Taxi/shared/context/SettingsContext'
 
 export default function Navbar({ settings }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { activeLogo } = useSettings()
-  const appLogo = activeLogo || settings?.general?.logo || settings?.customization?.logo || '';
+  const appLogo = activeLogo || settings?.general?.logo || settings?.customization?.logo || k9Logo;
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll)

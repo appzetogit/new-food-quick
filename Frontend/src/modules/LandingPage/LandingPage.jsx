@@ -1,3 +1,4 @@
+import { TAXI_ENABLED } from "@/config/features"
 import React, { useEffect, useState, lazy, Suspense } from 'react'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
@@ -19,7 +20,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     // Dynamic SEO Title & Meta tags for better discoverability
-    document.title = "Quick Drop - All-in-One Super-App for Rides, Food & Logistics"
+    document.title = !TAXI_ENABLED ? "Quick Drop - Food Delivery & Quick Commerce" : "Quick Drop - All-in-One Super-App for Rides, Food & Logistics"
 
     // Find or create meta description tag
     let metaDesc = document.querySelector('meta[name="description"]')
@@ -28,7 +29,7 @@ export default function LandingPage() {
       metaDesc.name = 'description'
       document.head.appendChild(metaDesc)
     }
-    metaDesc.setAttribute('content', 'Quick Drop is the ultimate multi-service super-app for Ride Hailing (Taxi & Shares), Food & Dining Delivery, secure Courier Parcels, Airport Transfers, Hourly rentals, and Logistics cargo.')
+    metaDesc.setAttribute('content', !TAXI_ENABLED ? 'Order food and groceries on Quick Drop.' : 'Quick Drop is the ultimate multi-service super-app for Ride Hailing (Taxi & Shares), Food & Dining Delivery, secure Courier Parcels, Airport Transfers, Hourly rentals, and Logistics cargo.')
 
     // Fetch dynamic landing settings
     const fetchLandingSettings = async () => {

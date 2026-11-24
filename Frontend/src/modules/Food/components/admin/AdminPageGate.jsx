@@ -1,3 +1,4 @@
+import { isServiceOn } from "@/config/features"
 import { Navigate, useLocation, useNavigate } from "react-router-dom"
 import { Lock } from "lucide-react"
 import { adminSidebarMenu } from "@food/utils/adminSidebarMenu"
@@ -16,7 +17,7 @@ const PANELS = [
   { service: "quickCommerce", base: "/admin/quick-commerce", label: "Quick Commerce" },
   { service: "medical", base: "/admin/medical", label: "Medical" },
   { service: "taxi", base: "/taxi/admin/dashboard", label: "Taxi" },
-]
+].filter((p) => isServiceOn(p.service))
 
 /** First screen this admin can open in a panel, or null. */
 function landingFor(access, panel) {

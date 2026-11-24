@@ -1,3 +1,4 @@
+import { isServiceOn } from "@/config/features"
 import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { toast } from "sonner"
@@ -33,7 +34,7 @@ const TABS = [
   { key: "medical", label: "Medical", icon: Pill },
   { key: "taxi", label: "Taxi", icon: Bike },
   { key: "parcel", label: "Parcel", icon: Package },
-]
+].filter((t) => isServiceOn(t.key))
 
 const SOURCE_STYLE = {
   food: { label: "Food", cls: "bg-orange-50 text-orange-700 border-orange-200" },

@@ -18,3 +18,19 @@ const on = (value) => String(value ?? '').trim().toLowerCase() === 'true';
  * tab in both panel switchers. Off unless VITE_ENABLE_SERVICE_PROVIDER=true.
  */
 export const SERVICE_PROVIDER_ENABLED = on(import.meta.env.VITE_ENABLE_SERVICE_PROVIDER);
+
+/**
+ * Taxi and Medical. This product is Master + Food + Quick Commerce, so both are
+ * off unless a site's build asks for them. Their code stays: Master's partner
+ * documents and shared settings use parts of the Taxi module.
+ */
+export const TAXI_ENABLED = on(import.meta.env.VITE_ENABLE_TAXI);
+export const MEDICAL_ENABLED = on(import.meta.env.VITE_ENABLE_MEDICAL);
+
+const OFF = new Set([
+  ...(TAXI_ENABLED ? [] : ["taxi", "parcel", "porter", "taxiAndPorter", "heavyParcel"]),
+  ...(MEDICAL_ENABLED ? [] : ["medical"]),
+]);
+
+/** Is this service (by the key the screens use) offered on this site? */
+export const isServiceOn = (key) => !OFF.has(key);

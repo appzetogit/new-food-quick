@@ -1,3 +1,4 @@
+import { TAXI_ENABLED } from "@/config/features"
 import React, { Suspense, useEffect, useRef, useState, lazy } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Car, Utensils } from 'lucide-react'
@@ -27,7 +28,7 @@ export default function Hero({ settings }) {
       img: '/hero2.png',
       line1: 'Your city,',
       line2: 'at your fingertips.',
-      desc: settings?.hero_description || 'Order premium rides, track deliveries in real time, send couriers securely, and book logistics instantly. All in one super-app.'
+      desc: settings?.hero_description || (!TAXI_ENABLED && 'Food from local restaurants and groceries from nearby stores, delivered fast.') || 'Order premium rides, track deliveries in real time, send couriers securely, and book logistics instantly. All in one super-app.'
     },
     {
       img: taxiHeroBg,
@@ -41,7 +42,7 @@ export default function Hero({ settings }) {
       line2: 'delivered hot & fresh.',
       desc: 'Order from local favorites or search top dining options with swift contactless cargo deliveries.'
     }
-  ]
+  ].filter((s) => TAXI_ENABLED || s.img !== taxiHeroBg)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -205,7 +206,7 @@ export default function Hero({ settings }) {
           transition={{ delay: 0.8, duration: 0.7 }}
           className="mt-20 flex flex-wrap justify-center gap-3"
         >
-          {['🚕 Ride Hailing', '🍔 Food Delivery', '📦 Courier', '✈️ Airport Transfer', '🏍️ Hourly Rentals', '🚛 Cargo'].map((s) => {
+          {(!TAXI_ENABLED ? ['🍔 Food Delivery', '🛒 Quick Commerce'] : ['🚕 Ride Hailing', '🍔 Food Delivery', '📦 Courier', '✈️ Airport Transfer', '🏍️ Hourly Rentals', '🚛 Cargo']).map((s) => {
             const isFood = s.includes('Food') || s.includes('Courier') || s.includes('Rentals');
             const isRide = s.includes('Ride') || s.includes('Airport') || s.includes('Cargo');
             let borderColor = 'rgba(15,23,42,0.1)';

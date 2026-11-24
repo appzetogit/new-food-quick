@@ -1,0 +1,62 @@
+name: Test and build
+
+# Builds on a clean runner, never on a developer machine or the shared server.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Integrity check
+        run: node Frontend/scripts/check-source-integrity.mjs
+      - name: Install
+        working-directory: Backend
+        run: npm ci
+      - name: Test
+        working-directory: Backend
+        env:
+          JWT_ACCESS_SECRET: ci-test-access-secret
+          JWT_REFRESH_SECRET: ci-test-refresh-secret
+          SOCKET_CORS_ORIGIN: https://superapp.appzeto.com
+        run: npm test
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Integrity check
+        run: node Frontend/scripts/check-source-integrity.mjs
+      - name: Install
+        working-directory: Frontend
+        run: npm ci || npm install
+      - name: Build
+        working-directory: Frontend
+        env:
+          VITE_API_BASE_URL: https://aodo.buytogetherindia.com/api/v1
+          VITE_SOCKET_URL: https://aodo.buytogetherindia.com
+          VITE_BACKEND_ORIGIN: https://aodo.buytogetherindia.com
+        run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: Frontend/dist
+          retention-days: 7

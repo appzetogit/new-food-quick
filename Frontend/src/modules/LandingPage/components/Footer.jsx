@@ -1,6 +1,7 @@
+import { TAXI_ENABLED } from "@/config/features"
 import React, { useEffect, useRef } from 'react'
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
-import k9Logo from '../assets/k9-logo.png'
+import k9Logo from '../assets/aodo-logo.png'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useSettings } from '../../Taxi/shared/context/SettingsContext'
@@ -9,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function Footer({ settings }) {
   const { activeLogo } = useSettings()
-  const appLogo = activeLogo || settings?.general?.logo || settings?.customization?.logo || '';
+  const appLogo = activeLogo || settings?.general?.logo || settings?.customization?.logo || k9Logo;
   const currentYear = new Date().getFullYear()
   const footerRef = useRef(null)
   const topBannerRef = useRef(null)
@@ -17,14 +18,14 @@ export default function Footer({ settings }) {
 
   const links = {
     company: [
-      { name: 'About Us', href: '/taxi/about' }
+      TAXI_ENABLED ? { name: 'About Us', href: '/taxi/about' } : { name: 'Support', href: '/support' }
     ],
     services: [
       { name: 'Ride Hailing', href: 'https://play.google.com/store/apps/details?id=com.k9bharat.user' },
       { name: 'Food Delivery', href: 'https://play.google.com/store/apps/details?id=com.k9bharat.user' },
       { name: 'Parcels & Logistics', href: 'https://play.google.com/store/apps/details?id=com.k9bharat.user' },
       { name: 'Airport Transfers', href: 'https://play.google.com/store/apps/details?id=com.k9bharat.user' }
-    ],
+    ].filter((l) => TAXI_ENABLED || l.name === 'Food Delivery'),
     legal: [
       { name: 'Terms of Service', href: '/terms?tab=terms' },
       { name: 'Privacy Policy', href: '/terms?tab=privacy' },

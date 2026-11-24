@@ -1,3 +1,4 @@
+import { TAXI_ENABLED } from "@/config/features"
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
@@ -5,7 +6,7 @@ import { Plus, Minus } from 'lucide-react'
 const defaultFaqs = [
   {
     question: 'What services are supported by Quick Drop?',
-    answer: 'Quick Drop is an all-in-one super-app supporting Ride Hailing (Taxi & Cab Sharing), Food & Dining Delivery, secure Parcel Courier Services, pre-scheduled Airport Transfers, Hourly Vehicle Rentals, and commercial Cargo/Logistics.'
+    answer: !TAXI_ENABLED ? 'Quick Drop supports food delivery and quick commerce: meals from local restaurants, and groceries from nearby stores.' : 'Quick Drop is an all-in-one super-app supporting Ride Hailing (Taxi & Cab Sharing), Food & Dining Delivery, secure Parcel Courier Services, pre-scheduled Airport Transfers, Hourly Vehicle Rentals, and commercial Cargo/Logistics.'
   },
   {
     question: 'How do I register as a driver partner?',
@@ -23,7 +24,7 @@ const defaultFaqs = [
     question: 'Can I schedule airport transfers in advance?',
     answer: 'Absolutely. The Airport Transfer module allows you to pre-schedule rides hours or days in advance. Simply select the transfer option, specify your flight details, and a driver will be dispatched to match your schedule.'
   }
-]
+].filter((f) => TAXI_ENABLED || !/driver partner|airport/.test(f.question))
 
 export default function FAQ({ settings }) {
   const [openIdx, setOpenIdx] = useState(null)

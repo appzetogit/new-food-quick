@@ -1,3 +1,4 @@
+import { TAXI_ENABLED } from "@/config/features"
 import { useCallback, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { toast } from "sonner"
@@ -26,7 +27,7 @@ const CREATE_LINKS = [
   { label: "Food coupon", path: "/admin/food/coupons" },
   { label: "Quick & Medical coupon", path: "/admin/quick-commerce/coupons" },
   { label: "Taxi promo code", path: "/taxi/admin/promotions/promo-codes" },
-]
+].filter((s) => TAXI_ENABLED || !s.path.startsWith("/taxi/"))
 const EDIT_PATH = {
   food: "/admin/food/coupons",
   quick: "/admin/quick-commerce/coupons",

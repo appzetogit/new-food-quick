@@ -1,3 +1,4 @@
+import { isServiceOn } from "@/config/features"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { toast } from "sonner"
 import { Loader2, Search, X, MessageSquare, Phone, RefreshCw } from "lucide-react"
@@ -23,7 +24,7 @@ const SERVICES = [
   { key: "food", label: "Food" },
   { key: "quickCommerce", label: "Quick & Medical" },
   { key: "taxi", label: "Taxi" },
-]
+].filter((s) => isServiceOn(s.key))
 
 const WHO = {
   customer: "Customer",
