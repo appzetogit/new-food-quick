@@ -16,7 +16,7 @@ export async function downloadSettlementPdf(data) {
 
   doc.setFont("helvetica", "bold")
   doc.setFontSize(15)
-  doc.text("QUICKDROPS INDIA", 14, 15)
+  doc.text("AODO INDIA", 14, 15)
   doc.setFontSize(11)
   doc.text("Food Partner Settlement Statement", 14, 21)
   doc.setFont("helvetica", "normal")
@@ -108,7 +108,7 @@ export async function downloadSettlementPdf(data) {
   doc.setTextColor(90)
   const notes = [
     "Bill total = Basic amount + Packing charges + GST on restaurant bill. Restaurant payable = Bill total - Commission.",
-    ...(showDeductions ? ["* Deductions: GST on the food that Quickdrops pays to the government for this restaurant, and discounts the restaurant itself offered."] : []),
+    ...(showDeductions ? ["* Deductions: GST on the food that Aodo pays to the government for this restaurant, and discounts the restaurant itself offered."] : []),
     "This is a system-generated statement.",
   ]
   for (const line of notes) {

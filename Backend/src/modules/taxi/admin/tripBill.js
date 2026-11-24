@@ -2,7 +2,7 @@
  * The complete bill of one taxi ride or parcel, for Taxi admin > Trip Requests.
  *
  * What the customer was charged, line by line, and how it divides between the
- * driver and Quickdrops. Built from the ride itself:
+ * driver and Aodo. Built from the ride itself:
  *
  *   trip fare (the driver's)  = fare before surge - platform charges
  *   platform charges          = service tax + platform fee + GST on the fee
@@ -88,7 +88,7 @@ export function buildTripBill(ride) {
             driverTotal: driverEarnings,
             commission: money(ride?.commissionAmount),
             quickdropsKeeps,
-            // Owed on to the government out of what Quickdrops keeps.
+            // Owed on to the government out of what Aodo keeps.
             taxesToGovernment: chargesRecorded ? money(serviceTax + platformFeeGst) : null,
         },
     };

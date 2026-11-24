@@ -1268,7 +1268,7 @@ export default function HubMenu() {
                         ? "border-emerald-200 bg-emerald-50 text-emerald-800"
                         : "border-amber-200 bg-amber-50 text-amber-800"
                     }`}
-                    title="Set by Quick Drop admin"
+                    title="Set by Aodo admin"
                   >
                     {gstSetting.inclusive
                       ? `Prices include GST${gstSetting.rate > 0 ? ` (${gstSetting.rate}%)` : ""}`
@@ -1840,7 +1840,7 @@ export default function HubMenu() {
                       <span className="text-sm font-medium text-gray-900">I will turn it on myself</span>
                     </label>
                     <p className="text-xs text-gray-500 ml-8">
-                      This item will not be visible to customers on the Quick Drop Store app till you switch it on.
+                      This item will not be visible to customers on the Aodo Store app till you switch it on.
                     </p>
                   </div>
                 </div>

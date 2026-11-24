@@ -317,7 +317,7 @@ function CycleView({ data, restaurantName, officers, params, restaurantId, onCha
                 <th className="px-3 py-2.5 text-right font-medium">GST on bill</th>
                 <th className="px-3 py-2.5 text-right font-medium">Total bill</th>
                 <th className="px-3 py-2.5 text-right font-medium">Commission</th>
-                {showDeductions && <th className="px-3 py-2.5 text-right font-medium" title="GST paid to the government by Quickdrops for this restaurant, and discounts the restaurant offered">Deductions*</th>}
+                {showDeductions && <th className="px-3 py-2.5 text-right font-medium" title="GST paid to the government by Aodo for this restaurant, and discounts the restaurant offered">Deductions*</th>}
                 <th className="px-3 py-2.5 text-right font-medium">Restaurant payable</th>
                 <th className="px-3 py-2.5 font-medium">Payment status</th>
               </tr>
@@ -358,7 +358,7 @@ function CycleView({ data, restaurantName, officers, params, restaurantId, onCha
         </div>
         {showDeductions && (
           <p className="border-t border-slate-100 px-4 py-2 text-xs text-slate-500">
-            * Deductions: the food GST that Quickdrops pays to the government for this restaurant (set in Restaurant GST), and discounts the restaurant itself offered. Payable is exactly what the restaurant's app shows as earned.
+            * Deductions: the food GST that Aodo pays to the government for this restaurant (set in Restaurant GST), and discounts the restaurant itself offered. Payable is exactly what the restaurant's app shows as earned.
           </p>
         )}
       </section>

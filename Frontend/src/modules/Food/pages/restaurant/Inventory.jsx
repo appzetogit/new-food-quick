@@ -2780,7 +2780,7 @@ export default function Inventory() {
                         />
                       </div>
                       <p className="text-sm text-gray-500">
-                        Item won't be visible to customers on the Quick Drop Store app till you mark it back in stock
+                        Item won't be visible to customers on the Aodo Store app till you mark it back in stock
                       </p>
                     </div>
                   </label>

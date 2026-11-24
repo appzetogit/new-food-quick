@@ -189,7 +189,7 @@ export default function VideoSection({ settings }) {
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Click through our specialized features to preview how Quick Drop delivers comfort, flavor, and freight.
+            Click through our specialized features to preview how Aodo delivers comfort, flavor, and freight.
           </p>
         </div>
 

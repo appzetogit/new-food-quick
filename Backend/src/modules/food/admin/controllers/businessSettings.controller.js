@@ -153,7 +153,7 @@ export async function getBusinessSettings(req, res, next) {
         if (!settings) {
             // Create default settings if none exist
             settings = await FoodBusinessSettings.create({
-                companyName: 'Quick Drop',
+                companyName: 'Aodo',
                 email: 'admin@Quick Drop.com'
             });
         }

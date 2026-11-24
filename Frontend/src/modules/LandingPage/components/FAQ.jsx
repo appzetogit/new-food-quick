@@ -5,8 +5,8 @@ import { Plus, Minus } from 'lucide-react'
 
 const defaultFaqs = [
   {
-    question: 'What services are supported by Quick Drop?',
-    answer: !TAXI_ENABLED ? 'Quick Drop supports food delivery and quick commerce: meals from local restaurants, and groceries from nearby stores.' : 'Quick Drop is an all-in-one super-app supporting Ride Hailing (Taxi & Cab Sharing), Food & Dining Delivery, secure Parcel Courier Services, pre-scheduled Airport Transfers, Hourly Vehicle Rentals, and commercial Cargo/Logistics.'
+    question: 'What services are supported by Aodo?',
+    answer: !TAXI_ENABLED ? 'Aodo supports food delivery and quick commerce: meals from local restaurants, and groceries from nearby stores.' : 'Aodo is an all-in-one super-app supporting Ride Hailing (Taxi & Cab Sharing), Food & Dining Delivery, secure Parcel Courier Services, pre-scheduled Airport Transfers, Hourly Vehicle Rentals, and commercial Cargo/Logistics.'
   },
   {
     question: 'How do I register as a driver partner?',
@@ -18,7 +18,7 @@ const defaultFaqs = [
   },
   {
     question: 'Is in-app payment secure?',
-    answer: 'Yes. Quick Drop utilizes secure SSL encryption and integrated payment gateways to secure credit cards, digital wallets, UPI, and bank transfers.'
+    answer: 'Yes. Aodo utilizes secure SSL encryption and integrated payment gateways to secure credit cards, digital wallets, UPI, and bank transfers.'
   },
   {
     question: 'Can I schedule airport transfers in advance?',

@@ -117,7 +117,7 @@ export async function sendFoodInvoiceEmail(order, user) {
     </tr>
   `).join('');
 
-  const subject = `Your Quickdrops Food Invoice [Order #${orderId}]`;
+  const subject = `Your Aodo Food Invoice [Order #${orderId}]`;
   const from = emailCredentials().from;
 
   const html = `
@@ -126,7 +126,7 @@ export async function sendFoodInvoiceEmail(order, user) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quickdrops Invoice</title>
+  <title>Aodo Invoice</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
     body {
@@ -256,13 +256,13 @@ export async function sendFoodInvoiceEmail(order, user) {
   <div class="wrapper">
     <div class="container">
       <div class="header">
-        <h1>QUICKDROPS</h1>
+        <h1>AODO</h1>
         <p>Your Food Delivery Invoice</p>
       </div>
       <div class="content">
         <h2 class="welcome-text">Hi ${name},</h2>
         <p style="color: #475569; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
-          Thanks for ordering through Quickdrops. Here is the detailed summary of your food delivery order invoice.
+          Thanks for ordering through Aodo. Here is the detailed summary of your food delivery order invoice.
         </p>
         
         <div class="metadata-box">
@@ -317,7 +317,7 @@ export async function sendFoodInvoiceEmail(order, user) {
       </div>
       <div class="footer">
         <p>If you have any questions or feedback, please reach out to our customer support team.</p>
-        <p>&copy; ${new Date().getFullYear()} Quickdrops. All rights reserved.</p>
+        <p>&copy; ${new Date().getFullYear()} Aodo. All rights reserved.</p>
       </div>
     </div>
   </div>
@@ -327,7 +327,7 @@ export async function sendFoodInvoiceEmail(order, user) {
 
   try {
     await trans.sendMail({
-      from: typeof from === 'string' && from.includes('<') ? from : `Quickdrops <${from}>`,
+      from: typeof from === 'string' && from.includes('<') ? from : `Aodo <${from}>`,
       to: email,
       subject,
       html
@@ -390,7 +390,7 @@ export async function sendTaxiInvoiceEmail(ride, user) {
     ? `${ride.estimatedDurationMinutes} mins` 
     : 'N/A';
 
-  const subject = `Your Quickdrops Trip Invoice [Trip #${rideId}]`;
+  const subject = `Your Aodo Trip Invoice [Trip #${rideId}]`;
   const from = emailCredentials().from;
 
   const html = `
@@ -399,7 +399,7 @@ export async function sendTaxiInvoiceEmail(ride, user) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quickdrops Trip Invoice</title>
+  <title>Aodo Trip Invoice</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
     body {
@@ -537,13 +537,13 @@ export async function sendTaxiInvoiceEmail(ride, user) {
   <div class="wrapper">
     <div class="container">
       <div class="header">
-        <h1>QUICKDROPS</h1>
+        <h1>AODO</h1>
         <p>Your Trip Invoice [${serviceType}]</p>
       </div>
       <div class="content">
         <h2 class="welcome-text">Hi ${name},</h2>
         <p style="color: #475569; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
-          Thanks for riding with Quickdrops. Here is your trip summary and receipt.
+          Thanks for riding with Aodo. Here is your trip summary and receipt.
         </p>
         
         <div class="metadata-box">
@@ -604,7 +604,7 @@ export async function sendTaxiInvoiceEmail(ride, user) {
       </div>
       <div class="footer">
         <p>If you have any questions or feedback, please reach out to our customer support team.</p>
-        <p>&copy; ${new Date().getFullYear()} Quickdrops. All rights reserved.</p>
+        <p>&copy; ${new Date().getFullYear()} Aodo. All rights reserved.</p>
       </div>
     </div>
   </div>
@@ -614,7 +614,7 @@ export async function sendTaxiInvoiceEmail(ride, user) {
 
   try {
     await trans.sendMail({
-      from: typeof from === 'string' && from.includes('<') ? from : `Quickdrops <${from}>`,
+      from: typeof from === 'string' && from.includes('<') ? from : `Aodo <${from}>`,
       to: email,
       subject,
       html

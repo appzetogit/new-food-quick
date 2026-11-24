@@ -174,7 +174,7 @@ export async function sendFoodInvoiceWhatsApp(order, user) {
   } else {
     // Free-form Receipt Fallback Mode
     const itemsListText = items.map(i => `• _${i.name}_ x${i.quantity} - *₹${i.total.toFixed(2)}*${i.addonsText ? `\n   + ${i.addonsText}` : ''}`).join('\n');
-    const invoiceText = `*QUICKDROPS - FOOD INVOICE* 🍔
+    const invoiceText = `*AODO - FOOD INVOICE* 🍔
 ---------------------------------------------
 *Hi ${customerName},*
 Thank you for your order! Here is your receipt.
@@ -192,7 +192,7 @@ ${itemsListText}
 ${tax > 0 ? `• ${Number(order.pricing?.bill?.gstRate) > 0 ? `GST @ ${Number(order.pricing.bill.gstRate)}%${Number(order.pricing?.bill?.taxableAmount) > 0 ? ` on ₹${Number(order.pricing.bill.taxableAmount).toFixed(2)}` : ''}` : 'GST'}: ₹${tax.toFixed(2)}\n` : ''}${packagingFee > 0 ? `• Packaging Fee: ₹${packagingFee.toFixed(2)}\n` : ''}${deliveryFee > 0 ? `• Delivery Fee: ₹${deliveryFee.toFixed(2)}\n` : ''}${platformFee > 0 ? `• Platform Fee: ₹${platformFee.toFixed(2)}\n` : ''}${discount > 0 ? `• Discount: -₹${discount.toFixed(2)}\n` : ''}---------------------------------------------
 *Total Paid: ₹${total.toFixed(2)}*
 
-Thank you for ordering with Quickdrops! For help, reply to this message.`;
+Thank you for ordering with Aodo! For help, reply to this message.`;
 
     const textPayload = {
       type: 'text',
@@ -268,7 +268,7 @@ export async function sendTaxiInvoiceWhatsApp(ride, user) {
     return sendWhatsAppMessage(recipientPhone, templatePayload, { sentBy: 'taxi-invoice' });
   } else {
     // Free-form Receipt Fallback Mode
-    const invoiceText = `*QUICKDROPS - TRIP INVOICE* 🚖
+    const invoiceText = `*AODO - TRIP INVOICE* 🚖
 ---------------------------------------------
 *Hi ${customerName},*
 Thanks for riding with us! Here is your trip receipt.
