@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import k9Logo from '../assets/aodo-logo.png'
+import k9Logo from '../assets/aodo-logo.webp'
 import { useSettings } from '../../Taxi/shared/context/SettingsContext'
 
 export default function Navbar({ settings }) {

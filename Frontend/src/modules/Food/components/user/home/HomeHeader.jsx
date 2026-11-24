@@ -11,11 +11,11 @@ import {
 } from "@food/components/ui/popover";
 import { Badge } from "@food/components/ui/badge";
 import { Avatar, AvatarFallback } from "@food/components/ui/avatar";
-import foodIcon from "@food/assets/category-icons/food.png.png";
-import taxiIcon from "@food/assets/category-icons/taxi.png.png";
+import foodIcon from "@food/assets/category-icons/food.webp";
+import taxiIcon from "@food/assets/category-icons/taxi.webp";
 import quickIcon from "@food/assets/category-icons/quick.png";
 import hotelIcon from "@food/assets/category-icons/hotel.png";
-import burgerAvatar from "@food/assets/burger_avatar.png";
+import burgerAvatar from "@food/assets/burger_avatar.webp";
 import dalTadka from "@food/assets/menu-items/dal_tadka_1771226053751.png";
 import vegSpringRoll from "@food/assets/menu-items/veg_spring_roll_1771226110508.png";
 import vegChowmein from "@food/assets/menu-items/veg_chowmein_noodles_1771226095511.png";

@@ -5,7 +5,7 @@ import { adminAPI } from "@food/api"
 import { getGoogleMapsApiKey } from "@food/utils/googleMapsApiKey"
 import { Loader } from "@googlemaps/js-api-loader"
 import { subscribeAllDeliveryLocations } from "@food/realtimeTracking"
-import bikeLogo from "@food/assets/bikelogo.png"
+import bikeLogo from "@food/assets/bikelogo.webp"
 import { currentAdminBase } from "@food/components/admin/AdminSidebar"
 
 /*

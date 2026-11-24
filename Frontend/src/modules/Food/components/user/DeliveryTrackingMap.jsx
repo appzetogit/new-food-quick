@@ -10,8 +10,8 @@ import {
 } from '@react-google-maps/api';
 import io from 'socket.io-client';
 import { API_BASE_URL } from '@food/api/config';
-import bikeLogo from '@food/assets/bikelogo.png';
-import k9Logo from '@food/assets/aodo-logo.png';
+import bikeLogo from '@food/assets/bikelogo.webp';
+import k9Logo from '@food/assets/aodo-logo.webp';
 import { subscribeOrderTracking } from '@food/realtimeTracking';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Navigation, Info, Circle } from 'lucide-react';

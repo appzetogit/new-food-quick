@@ -1,5 +1,6 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
-import { useEffect, useState, createContext, useContext } from "react"
+import { Suspense, useEffect, useState, createContext, useContext } from "react"
+import Loader from "@food/components/Loader"
 import { ProfileProvider } from "@food/context/ProfileContext"
 import LocationPrompt from "./LocationPrompt"
 import { CartProvider } from "@food/context/CartContext"
@@ -177,7 +178,9 @@ export default function UserLayout() {
                 </div>
                 <LocationPrompt />
                 <main className={showBottomNav ? "md:pt-40" : ""}>
-                  <Outlet />
+                  <Suspense fallback={<Loader inline />}>
+                    <Outlet />
+                  </Suspense>
                 </main>
                 {showBottomNav && <BottomNavigation />}
               </LocationSelectorProvider>

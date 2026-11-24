@@ -1,0 +1,30 @@
+.aodo-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 0.85);
+  opacity: 0;
+  animation: aodo-loader-in 0.2s ease-out 0.15s forwards;
+}
+.dark .aodo-loader { background: rgb(10 10 10 / 0.85); }
+.aodo-loader.aodo-loader--inline { position: relative; inset: auto; z-index: auto; min-height: 60vh; background: none; }
+.aodo-loader__bar { position: absolute; inset: 0 0 auto 0; height: 3px; overflow: hidden; }
+.aodo-loader__bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #061a5c, #59c414, #b6f23c);
+  transform-origin: left;
+  animation: aodo-loader-bar 8s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+.aodo-loader__mark { width: 64px; height: 64px; animation: aodo-loader-mark 1.1s ease-in-out infinite; }
+
+@keyframes aodo-loader-in { to { opacity: 1; } }
+@keyframes aodo-loader-bar { from { transform: scaleX(0.02); } to { transform: scaleX(0.95); } }
+@keyframes aodo-loader-mark { 50% { transform: translateY(-8px) scale(1.04); } }
+@media (prefers-reduced-motion: reduce) {
+  .aodo-loader__mark, .aodo-loader__bar::after { animation: none; }
+}

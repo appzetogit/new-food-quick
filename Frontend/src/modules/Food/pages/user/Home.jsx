@@ -89,7 +89,7 @@ import {
 } from "@food/components/ui/dropdown-menu";
 import { useLocation } from "@food/hooks/useLocation";
 import { useZone } from "@food/hooks/useZone";
-import quickSpicyLogo from "@food/assets/aodo-logo.png";
+import quickSpicyLogo from "@food/assets/aodo-logo.webp";
 import offerImage from "@food/assets/offerimage.png";
 import api, { publicGetOnce, restaurantAPI, adminAPI, orderAPI } from "@food/api";
 import { API_BASE_URL } from "@food/api/config";
@@ -120,9 +120,9 @@ import StaticPromoBanners from "@food/components/user/home/StaticPromoBanners";
 
 // Explore More Icons
 import exploreOffers from "@food/assets/explore more icons/offers.png";
-import exploreGourmet from "@food/assets/explore more icons/gourmet.png";
+import exploreGourmet from "@food/assets/explore more icons/gourmet.webp";
 import exploreTop10 from "@food/assets/explore more icons/top 10.png";
-import exploreCollection from "@food/assets/explore more icons/collection.png";
+import exploreCollection from "@food/assets/explore more icons/collection.webp";
 
 // Banner images for hero carousel - will be fetched from API
 

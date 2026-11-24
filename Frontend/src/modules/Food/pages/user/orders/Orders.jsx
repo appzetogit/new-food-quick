@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { Skeleton } from "@food/components/ui/skeleton"
+import { LoadingSkeletonRegion, SkeletonLines } from "@food/components/ui/loading-skeletons"
 import { ArrowLeft, Search, MoreVertical, ChevronRight, Star, RotateCcw, AlertCircle, Loader2, Clock, X, Share2, MessageCircle, Send, Copy, Mail, MessagesSquare, Link2 } from "lucide-react"
 import { orderAPI } from "@food/api"
 import { useCart } from "@food/context/CartContext"
@@ -657,9 +659,14 @@ Order again from this restaurant in the ${companyName} app.`
           </Link>
           <h1 className="ml-4 text-xl font-semibold text-gray-800 dark:text-white">Your Orders</h1>
         </div>
-        <div className="flex items-center justify-center py-20">
-          <Loader2 className="w-8 h-8 text-[#EB590E] animate-spin" />
-        </div>
+        <LoadingSkeletonRegion label="Loading your orders" className="space-y-4 p-4">
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className="flex gap-4 rounded-2xl bg-white p-4 shadow-sm dark:bg-zinc-900">
+              <Skeleton className="h-16 w-16 shrink-0 rounded-xl" />
+              <SkeletonLines lines={3} className="flex-1 pt-1" />
+            </div>
+          ))}
+        </LoadingSkeletonRegion>
       </div>
     )
   }

@@ -3,8 +3,8 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, Search, Wallet, Utensils, Car, Bell } from 'lucide-react';
 import { DEFAULT_LOCATION_LABEL, getSavedLocationLabel, LOCATION_UPDATED_EVENT } from '../services/locationStore';
-import foodIcon from '@food/assets/category-icons/food.png.png';
-import taxiIcon from '@food/assets/category-icons/taxi.png.png';
+import foodIcon from '@food/assets/category-icons/food.webp';
+import taxiIcon from '@food/assets/category-icons/taxi.webp';
 import { useSettings } from '../../../shared/context/SettingsContext';
 
 const HeaderGreeting = () => {

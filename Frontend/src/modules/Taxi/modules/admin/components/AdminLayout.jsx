@@ -54,7 +54,7 @@ import {
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import quickSpicyLogo from "@food/assets/aodo-logo.png";
+import quickSpicyLogo from "@food/assets/aodo-logo.webp";
 import { getCachedSettings, loadBusinessSettings, normalizeCompanyName } from "@food/utils/businessSettings";
 import { refreshAdminAccess, useAdminAccess, hasPanel, isRestricted, canOpenPath } from "@food/utils/adminAccess";
 import { SERVICE_PROVIDER_ENABLED } from "@/config/features";

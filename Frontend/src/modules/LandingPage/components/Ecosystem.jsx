@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { UtensilsCrossed, Car, ArrowRight, CheckCircle2, Zap, Clock, Star } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import k9Logo from '../assets/aodo-logo.png'
+import k9Logo from '../assets/aodo-logo.webp'
 
 gsap.registerPlugin(ScrollTrigger)
 

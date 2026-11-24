@@ -1,9 +1,11 @@
 import { useState, useMemo, useRef, useEffect, useCallback } from "react"
+import { Skeleton } from "@food/components/ui/skeleton"
+import { LoadingSkeletonRegion, SkeletonLines } from "@food/components/ui/loading-skeletons"
 import { useSearchParams, Link, useNavigate } from "react-router-dom"
 import { 
   ArrowLeft, Star, Clock, Search, SlidersHorizontal, 
   ChevronDown, Bookmark, BadgePercent, Mic, Grid2x2,
-  X, Utensils, Store, Loader2, History
+  X, Utensils, Store, History
 } from "lucide-react"
 import { Card, CardContent } from "@food/components/ui/card"
 import { Button } from "@food/components/ui/button"
@@ -405,10 +407,16 @@ export default function ProfessionalSearch() {
           {(loading || (hasEffectiveCoordinates && (zoneLoading || zoneStatus === "loading"))) && (
             <motion.div 
                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-               className="flex flex-col items-center justify-center py-20"
+               className="py-4"
             >
-              <Loader2 className="w-8 h-8 text-rose-500 animate-spin mb-3" />
-              <p className="text-slate-400 text-sm">Finding the best for you...</p>
+              <LoadingSkeletonRegion label="Searching" className="space-y-4">
+                {[0, 1, 2, 3].map((i) => (
+                  <div key={i} className="flex gap-4 rounded-2xl bg-white p-4 shadow-sm dark:bg-zinc-900">
+                    <Skeleton className="h-20 w-20 shrink-0 rounded-xl" />
+                    <SkeletonLines lines={3} className="flex-1 pt-1" />
+                  </div>
+                ))}
+              </LoadingSkeletonRegion>
             </motion.div>
           )}
         </AnimatePresence>

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ArrowRight, Bike, ChevronDown, Menu, Search, ShoppingBasket, Star, UtensilsCrossed, X } from 'lucide-react'
 import apiClient from '@food/api'
 import api from '../Taxi/shared/api/axiosInstance'
-import logo from './assets/aodo-logo.png'
+import logo from './assets/aodo-logo.webp'
 import { AISLES, BRAND, CRAVINGS, FAQS, FOOD_HOME, PARTNERS, PHOTOS, STEPS, photo, searchPath } from './content'
 
 const NAV = [

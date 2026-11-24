@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import discountPromoIcon from "@food/assets/category-icons/discount_promo.png";
-import gourmetPromoIcon from "@food/assets/explore more icons/gourmet.png";
+import gourmetPromoIcon from "@food/assets/explore more icons/gourmet.webp";
 import pricePromoIcon from "@food/assets/category-icons/price_promo.png";
-import collectionPromoIcon from "@food/assets/explore more icons/collection.png";
+import collectionPromoIcon from "@food/assets/explore more icons/collection.webp";
 import { useValueShelfCap, valueShelfHeading, valueShelfName } from "@food/utils/valueShelf";
 
 export default function PromoRow({ handleVegModeChange, navigate, isVegMode, toggleRef }) {

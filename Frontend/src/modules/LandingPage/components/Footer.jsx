@@ -1,7 +1,7 @@
 import { TAXI_ENABLED } from "@/config/features"
 import React, { useEffect, useRef } from 'react'
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
-import k9Logo from '../assets/aodo-logo.png'
+import k9Logo from '../assets/aodo-logo.webp'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useSettings } from '../../Taxi/shared/context/SettingsContext'

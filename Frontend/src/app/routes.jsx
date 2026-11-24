@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { Suspense, lazy, useEffect, useLayoutEffect, useState, useRef } from 'react'
-import { AppShellSkeleton } from '@food/components/ui/loading-skeletons'
+import Loader from '@food/components/Loader'
 import { applyFoodUserTheme, applySavedTheme, applyTheme } from '../shared/utils/theme.js'
 
 const NATIVE_LAST_ROUTE_KEY = 'native_last_route'
@@ -17,7 +17,7 @@ const LandingPage = lazy(() => import('../modules/LandingPage/LandingPage'))
 const PartnerApp = lazy(() => import('../modules/partner/PartnerApp'))
 import ProtectedRoute from '@food/components/ProtectedRoute'
 
-const PageLoader = () => <AppShellSkeleton />
+const PageLoader = () => <Loader />
 
 /**
  * FoodAppWrapper — Quick-spicy App. को /food prefix के साथ render करता है.
