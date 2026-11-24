@@ -168,7 +168,7 @@ export default function Checkout() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-[#EB590E]" />
+                    <MapPin className="h-5 w-5 text-[#2a8500]" />
                     Delivery Address
                   </CardTitle>
                 </CardHeader>
@@ -188,7 +188,7 @@ export default function Checkout() {
                           <div
                             key={addressId || `${address.label}-${address.street}-${address.city}`}
                             className={`border-2 rounded-lg p-4 cursor-pointer transition-colors ${isSelected
-                              ? "border-[#EB590E] bg-primary-orange/5"
+                              ? "border-[#2a8500] bg-primary-orange/5"
                               : "border-gray-200 hover:border-primary-orange/40"
                               }`}
                             onClick={() => {
@@ -199,12 +199,12 @@ export default function Checkout() {
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
                                 {address.isDefault && (
-                                  <Badge className="mb-2 bg-[#EB590E] text-white">Default</Badge>
+                                  <Badge className="mb-2 bg-[#2a8500] text-white">Default</Badge>
                                 )}
                                 <p className="text-sm font-medium">{addressString}</p>
                               </div>
                               {isSelected && (
-                                <CheckCircle className="h-5 w-5 text-[#EB590E]" />
+                                <CheckCircle className="h-5 w-5 text-[#2a8500]" />
                               )}
                             </div>
                           </div>
@@ -232,7 +232,7 @@ export default function Checkout() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <CreditCard className="h-5 w-5 text-[#EB590E]" />
+                    <CreditCard className="h-5 w-5 text-[#2a8500]" />
                     Payment Method
                   </CardTitle>
                 </CardHeader>
@@ -255,7 +255,7 @@ export default function Checkout() {
                           <div
                             key={payment.id}
                             className={`border-2 rounded-lg p-4 cursor-pointer transition-colors ${isSelected
-                              ? "border-[#EB590E] bg-primary-orange/5"
+                              ? "border-[#2a8500] bg-primary-orange/5"
                               : "border-gray-200 hover:border-primary-orange/40"
                               }`}
                             onClick={() => setSelectedPayment(payment.id)}
@@ -264,7 +264,7 @@ export default function Checkout() {
                               <div className="flex-1">
                                 <div className="flex items-center gap-2 mb-2">
                                   {payment.isDefault && (
-                                    <Badge className="bg-[#EB590E] text-white">Default</Badge>
+                                    <Badge className="bg-[#2a8500] text-white">Default</Badge>
                                   )}
                                   <Badge variant="outline" className="capitalize">
                                     {payment.type}
@@ -276,7 +276,7 @@ export default function Checkout() {
                                 </p>
                               </div>
                               {isSelected && (
-                                <CheckCircle className="h-5 w-5 text-[#EB590E]" />
+                                <CheckCircle className="h-5 w-5 text-[#2a8500]" />
                               )}
                             </div>
                           </div>
@@ -348,12 +348,12 @@ export default function Checkout() {
                     </div>
                     <div className="flex justify-between font-bold text-lg md:text-xl lg:text-2xl pt-2 md:pt-3 border-t dark:border-gray-700">
                       <span className="dark:text-white">Total</span>
-                      <span className="text-[#EB590E] dark:text-primary-orange/80">₹{total.toFixed(0)}</span>
+                      <span className="text-[#2a8500] dark:text-primary-orange/80">₹{total.toFixed(0)}</span>
                     </div>
                   </div>
 
                   <Button
-                    className="w-full bg-[#EB590E] hover:bg-[#D94F0C] text-white mt-4 md:mt-6 h-11 md:h-12 text-sm md:text-base border-none"
+                    className="w-full bg-[#2a8500] hover:bg-[#1f6600] text-white mt-4 md:mt-6 h-11 md:h-12 text-sm md:text-base border-none"
                     onClick={handlePlaceOrder}
                     disabled={isPlacingOrder || !selectedAddress || !selectedPayment}
                   >

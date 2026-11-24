@@ -73,8 +73,8 @@ export default function Offers() {
     <div className="relative min-h-screen bg-[#f8f9fa] dark:bg-[#0a0a0a] overflow-x-clip">
       {/* Animated Background Blobs matching Home Theme */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-gradient-to-br from-[#d82c23]/30 to-[#ff6d00]/10 blur-[80px] sm:blur-[100px] animate-[blob_8s_ease-in-out_infinite]" />
-        <div className="absolute top-[40%] left-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full bg-gradient-to-tr from-[#ff6d00]/20 to-[#d82c23]/10 blur-[80px] sm:blur-[80px] animate-[blob-reverse_10s_ease-in-out_infinite]" />
+        <div className="absolute top-0 right-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-gradient-to-br from-[#061a5c]/30 to-[#0c2fa3]/10 blur-[80px] sm:blur-[100px] animate-[blob_8s_ease-in-out_infinite]" />
+        <div className="absolute top-[40%] left-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full bg-gradient-to-tr from-[#59c414]/20 to-[#2a8500]/10 blur-[80px] sm:blur-[80px] animate-[blob-reverse_10s_ease-in-out_infinite]" />
       </div>
       <style>{`
         @keyframes blob {
@@ -99,7 +99,7 @@ export default function Offers() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative w-full overflow-hidden h-[25vh] md:h-[30vh] lg:h-[35vh] rounded-b-[32px] md:rounded-b-[48px] shadow-[0_10px_30px_rgba(216,44,35,0.2)] bg-gradient-to-r from-[#d82c23] to-[#ff6d00]"
+          className="relative w-full overflow-hidden h-[25vh] md:h-[30vh] lg:h-[35vh] rounded-b-[32px] md:rounded-b-[48px] shadow-[0_10px_30px_rgba(6,26,92,0.2)] bg-gradient-to-r from-[#061a5c] to-[#0c2fa3]"
         >
           {/* Back Button */}
           <button 
@@ -180,7 +180,7 @@ export default function Offers() {
                   <ArrowLeft className="w-8 h-8 text-red-500" />
                 </div>
                 <p className="text-red-500 dark:text-red-400 font-bold text-lg text-center mb-4">{error}</p>
-                <Button onClick={() => window.location.reload()} className="bg-gradient-to-r from-[#d82c23] to-[#ff6d00] hover:shadow-lg hover:-translate-y-1 transition-all rounded-full px-8">Retry</Button>
+                <Button onClick={() => window.location.reload()} className="bg-gradient-to-r from-[#061a5c] to-[#0c2fa3] hover:shadow-lg hover:-translate-y-1 transition-all rounded-full px-8">Retry</Button>
               </motion.div>
             )}
 
@@ -197,7 +197,7 @@ export default function Offers() {
                     className="mb-12"
                   >
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="h-8 w-2 bg-gradient-to-b from-[#d82c23] to-[#ff6d00] rounded-full shadow-[0_0_10px_rgba(255,109,0,0.5)]"></div>
+                      <div className="h-8 w-2 bg-gradient-to-b from-[#061a5c] to-[#0c2fa3] rounded-full shadow-[0_0_10px_rgba(255,109,0,0.5)]"></div>
                       <h2 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white tracking-tight">
                         {offerText}
                       </h2>
@@ -217,7 +217,7 @@ export default function Offers() {
                             className="w-full block h-full"
                           >
                             <motion.div 
-                                className="group h-full bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl rounded-[24px] p-2 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(216,44,35,0.15)] border border-gray-100/50 dark:border-gray-800/50 transition-all duration-300"
+                                className="group h-full bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl rounded-[24px] p-2 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(6,26,92,0.15)] border border-gray-100/50 dark:border-gray-800/50 transition-all duration-300"
                                 whileHover={{ y: -6, scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                               >
@@ -232,7 +232,7 @@ export default function Offers() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 
                                 {/* Offer Badge */}
-                                <div className="absolute top-2 left-2 bg-gradient-to-r from-[#d82c23] to-[#ff6d00] text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full shadow-lg backdrop-blur-md flex items-center gap-1">
+                                <div className="absolute top-2 left-2 bg-gradient-to-r from-[#061a5c] to-[#0c2fa3] text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full shadow-lg backdrop-blur-md flex items-center gap-1">
                                   <Gift className="w-3 h-3" />
                                   {dish.offer}
                                 </div>
@@ -253,7 +253,7 @@ export default function Offers() {
                               <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mb-2 px-2 font-medium">
                                 {dish.dishName} - ₹{dish.discountedPrice}
                               </p>
-                              <div className="flex items-center gap-1 text-[#ff6d00] bg-[#ff6d00]/10 px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold max-w-fit mx-2">
+                              <div className="flex items-center gap-1 text-[#59c414] bg-[#59c414]/10 px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold max-w-fit mx-2">
                                 <Clock className="h-3 w-3" />
                                 <span>{dish.deliveryTime}</span>
                               </div>
@@ -274,7 +274,7 @@ export default function Offers() {
                     className="space-y-6 pt-4"
                   >
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="h-8 w-2 bg-gradient-to-b from-[#d82c23] to-[#ff6d00] rounded-full shadow-[0_0_10px_rgba(255,109,0,0.5)]"></div>
+                      <div className="h-8 w-2 bg-gradient-to-b from-[#061a5c] to-[#0c2fa3] rounded-full shadow-[0_0_10px_rgba(255,109,0,0.5)]"></div>
                       <h2 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-gray-100 tracking-tight">
                         Available Coupons
                       </h2>
@@ -289,32 +289,32 @@ export default function Offers() {
                         <motion.div key={o.id || o.offerId} variants={itemVariants}>
                           <motion.div 
                             whileHover={{ y: -6, scale: 1.02 }} 
-                            className="bg-white/90 dark:bg-[#111111]/90 backdrop-blur-xl rounded-[28px] border border-[#ff6d00]/20 shadow-[0_8px_24px_rgba(255,109,0,0.06)] hover:shadow-[0_16px_40px_rgba(255,109,0,0.15)] overflow-hidden relative cursor-pointer group"
+                            className="bg-white/90 dark:bg-[#111111]/90 backdrop-blur-xl rounded-[28px] border border-[#59c414]/20 shadow-[0_8px_24px_rgba(255,109,0,0.06)] hover:shadow-[0_16px_40px_rgba(255,109,0,0.15)] overflow-hidden relative cursor-pointer group"
                           >
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#ff6d00]/10 to-transparent rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
-                            <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#f8f9fa] dark:bg-[#0a0a0a] rounded-full border-r border-[#ff6d00]/30 shadow-inner"></div>
-                            <div className="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#f8f9fa] dark:bg-[#0a0a0a] rounded-full border-l border-[#ff6d00]/30 shadow-inner"></div>
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#59c414]/10 to-transparent rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+                            <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#f8f9fa] dark:bg-[#0a0a0a] rounded-full border-r border-[#59c414]/30 shadow-inner"></div>
+                            <div className="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#f8f9fa] dark:bg-[#0a0a0a] rounded-full border-l border-[#59c414]/30 shadow-inner"></div>
                             <div className="border-t-2 border-dashed border-gray-200 dark:border-gray-800 absolute top-1/2 left-6 right-6 -translate-y-1/2 opacity-50"></div>
 
                             <div className="p-6 sm:p-8 space-y-5 relative z-10">
                               <div className="flex items-start justify-between gap-3">
                                 <div>
                                   <div className="flex items-center gap-1.5 mb-1">
-                                    <Ticket className="w-3.5 h-3.5 text-[#ff6d00]" />
+                                    <Ticket className="w-3.5 h-3.5 text-[#59c414]" />
                                     <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Coupon Code</p>
                                   </div>
-                                  <p className="text-2xl sm:text-3xl font-black text-[#d82c23] tracking-wider uppercase">
+                                  <p className="text-2xl sm:text-3xl font-black text-[#2a8500] tracking-wider uppercase">
                                     {o.couponCode || "-"}
                                   </p>
                                 </div>
-                                <span className="px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold bg-gradient-to-r from-[#d82c23] to-[#ff6d00] text-white shadow-lg flex items-center gap-1">
+                                <span className="px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold bg-gradient-to-r from-[#061a5c] to-[#0c2fa3] text-white shadow-lg flex items-center gap-1">
                                   <Sparkles className="w-3 h-3" />
                                   {o.title || "Offer"}
                                 </span>
                               </div>
                               <div className="pt-4 space-y-2">
                                 <p className="text-sm text-slate-700 dark:text-slate-300 flex items-center gap-2 font-medium">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff6d00]"></span>
+                                  <span className="w-1.5 h-1.5 rounded-full bg-[#59c414]"></span>
                                   <span className="font-bold">Valid At:</span>{" "}
                                   {o.restaurantName || "All Restaurants"}
                                 </p>

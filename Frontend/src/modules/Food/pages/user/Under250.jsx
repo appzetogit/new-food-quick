@@ -973,7 +973,7 @@ export default function Under250() {
 
     <div className={`relative min-h-screen bg-white dark:bg-[#0a0a0a] ${shouldShowGrayscale ? 'grayscale opacity-75' : ''}`}>
       {/* Premium Glassmorphic Header Wrapper (Replica of Dining) */}
-      <div className="sticky top-0 z-50 w-full bg-gradient-to-r from-[#d82c23] to-[#ff6d00] rounded-b-[24px] shadow-[0_10px_20px_rgba(216,44,35,0.15)] md:hidden pb-1">
+      <div className="sticky top-0 z-50 w-full bg-gradient-to-r from-[#061a5c] to-[#0c2fa3] rounded-b-[24px] shadow-[0_10px_20px_rgba(6,26,92,0.15)] md:hidden pb-1">
         {/* Top Row: Location & Profile */}
         <div className="px-5 pt-6 pb-5 flex items-center justify-between max-w-2xl mx-auto">
           <div 
@@ -997,12 +997,12 @@ export default function Under250() {
           <div className="flex items-center gap-x-2 sm:gap-x-3">
             {/* Wallet Action */}
             <Link to="/user/wallet" className="flex items-center justify-center h-8 w-8 sm:h-[38px] sm:w-[38px] rounded-full bg-gray-100/80 dark:bg-gray-800 border border-gray-200/60 dark:border-gray-700 shadow-sm transition hover:bg-gray-200 active:scale-95">
-              <Wallet className="h-[15px] w-[15px] sm:h-[18px] sm:w-[18px] text-[#d82c23]" strokeWidth={2} />
+              <Wallet className="h-[15px] w-[15px] sm:h-[18px] sm:w-[18px] text-[#2a8500]" strokeWidth={2} />
             </Link>
 
             {/* Cart Action */}
             <Link to="/user/cart" className="flex items-center justify-center h-8 w-8 sm:h-[38px] sm:w-[38px] relative rounded-full bg-gray-100/80 dark:bg-gray-800 border border-gray-200/60 dark:border-gray-700 shadow-sm transition hover:bg-gray-200 active:scale-95">
-              <ShoppingCart className="h-[15px] w-[15px] sm:h-[18px] sm:w-[18px] text-[#d82c23]" strokeWidth={2} />
+              <ShoppingCart className="h-[15px] w-[15px] sm:h-[18px] sm:w-[18px] text-[#2a8500]" strokeWidth={2} />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] bg-[#711313] rounded-full flex items-center justify-center ring-2 ring-white dark:ring-[#0a0a0a]">
                   <span className="text-[9px] font-bold text-white">{cartCount > 99 ? "99+" : cartCount}</span>
@@ -1084,9 +1084,9 @@ export default function Under250() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <div className={`relative flex items-center justify-center w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-[20px] sm:rounded-[28px] md:rounded-[32px] overflow-hidden shadow-lg transition-all duration-300 ${!activeCategory ? 'ring-4 ring-[#ff6d00]/30 shadow-[#ff6d00]/20' : 'hover:shadow-xl hover:shadow-[#ff6d00]/10'}`}>
+                <div className={`relative flex items-center justify-center w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-[20px] sm:rounded-[28px] md:rounded-[32px] overflow-hidden shadow-lg transition-all duration-300 ${!activeCategory ? 'ring-4 ring-[#59c414]/30 shadow-[#59c414]/20' : 'hover:shadow-xl hover:shadow-[#59c414]/10'}`}>
                   {/* Vibrant animated gradient background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#d82c23] via-[#ff6d00] to-[#ff9d4a] opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#061a5c] via-[#0c2fa3] to-[#59c414] opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
                   {/* Subtle rotating glow effect */}
                   <div className="absolute w-[150%] h-[150%] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] opacity-20 animate-[spin_3s_linear_infinite]"></div>
@@ -1104,7 +1104,7 @@ export default function Under250() {
                     </svg>
                   </div>
                 </div>
-                <span className={`text-[11px] sm:text-sm md:text-base font-bold text-center pb-1 transition-colors duration-300 ${!activeCategory ? 'text-[#d82c23] dark:text-[#ff9d4a]' : 'text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white'}`}>
+                <span className={`text-[11px] sm:text-sm md:text-base font-bold text-center pb-1 transition-colors duration-300 ${!activeCategory ? 'text-[#2a8500] dark:text-[#ff9d4a]' : 'text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white'}`}>
                   Explore All
                 </span>
               </motion.div>
@@ -1627,7 +1627,7 @@ export default function Under250() {
                   <Button
                     className={`flex-1 h-[44px] md:h-[50px] lg:h-[56px] rounded-lg md:rounded-xl font-semibold flex items-center justify-center gap-2 text-sm md:text-base lg:text-lg ${shouldShowGrayscale
                       ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-600 cursor-not-allowed opacity-50'
-                      : 'bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 text-white'
+                      : 'bg-[#2a8500] hover:bg-[#1f6600] text-white'
                       }`}
                     onClick={(e) => {
                       if (!shouldShowGrayscale) {

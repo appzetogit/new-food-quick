@@ -143,13 +143,13 @@ export default function OrderHelp() {
   const getStatusColor = (status) => {
     switch (status) {
       case "confirmed":
-        return "bg-[#EB590E]"
+        return "bg-[#2a8500]"
       case "preparing":
         return "bg-primary-orange"
       case "outForDelivery":
         return "bg-primary-orange/50"
       case "delivered":
-        return "bg-[#EB590E]"
+        return "bg-[#2a8500]"
       default:
         return "bg-gray-500"
     }
@@ -409,7 +409,7 @@ export default function OrderHelp() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 lg:gap-6">
                 <div className="flex items-start gap-3 p-4 bg-muted/50 rounded-lg">
                   <div className="p-2 bg-primary-orange/10 rounded-lg">
-                    <Phone className="h-5 w-5 text-[#EB590E]" />
+                    <Phone className="h-5 w-5 text-[#2a8500]" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Phone Support</h3>
@@ -426,7 +426,7 @@ export default function OrderHelp() {
                 </div>
                 <div className="flex items-start gap-3 p-4 bg-muted/50 rounded-lg">
                   <div className="p-2 bg-primary-orange/10 rounded-lg">
-                    <Mail className="h-5 w-5 text-[#EB590E]" />
+                    <Mail className="h-5 w-5 text-[#2a8500]" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email Support</h3>

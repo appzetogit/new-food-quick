@@ -48,7 +48,7 @@ export default function TableBookingSuccess() {
                 animate={{ scale: 1, opacity: 1 }}
                 className="w-20 h-20 bg-[#FFF2EB] rounded-full flex items-center justify-center mb-6"
             >
-                <CheckCircle2 className="w-12 h-12 text-[#EB590E]" />
+                <CheckCircle2 className="w-12 h-12 text-[#2a8500]" />
             </motion.div>
 
             <motion.div
@@ -60,7 +60,7 @@ export default function TableBookingSuccess() {
                 <h1 className="text-3xl font-black text-gray-900">Seat Confirmed!</h1>
                 <p className="text-gray-500 font-medium tracking-wide italic">Your table is ready for you</p>
                 <div className="pt-2">
-                    <span className="bg-[#FFF2EB] text-[#EB590E] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-[#EB590E]/20">
+                    <span className="bg-[#FFF2EB] text-[#2a8500] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-[#2a8500]/20">
                         BOOKING ID: {booking.bookingId}
                     </span>
                 </div>
@@ -126,7 +126,7 @@ export default function TableBookingSuccess() {
                         </div>
                         <div className="space-y-1">
                             <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Status</p>
-                            <div className="bg-[#EB590E] text-white px-2 py-0.5 rounded-lg text-xs font-bold w-fit">
+                            <div className="bg-[#2a8500] text-white px-2 py-0.5 rounded-lg text-xs font-bold w-fit">
                                 CONFIRMED
                             </div>
                         </div>
@@ -150,7 +150,7 @@ export default function TableBookingSuccess() {
             >
                 <Button
                     onClick={() => navigate("/food/user/bookings")}
-                    className="w-full h-14 bg-red-500 hover:bg-red-600 text-white font-bold text-lg rounded-2xl shadow-xl shadow-red-100 flex items-center justify-center gap-2"
+                    className="w-full h-14 bg-[#2a8500] hover:bg-[#1f6600] text-white font-bold text-lg rounded-2xl shadow-xl shadow-red-100 flex items-center justify-center gap-2"
                 >
                     <List className="w-5 h-5" />
                     View My Bookings

@@ -96,8 +96,8 @@ export default function Gourmet() {
     <div className="relative min-h-screen bg-[#f8f9fa] dark:bg-[#0a0a0a] overflow-x-clip">
       {/* Animated Background Blobs matching Home Theme */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-gradient-to-br from-[#d82c23]/30 to-[#ff6d00]/10 blur-[80px] sm:blur-[100px] animate-[blob_8s_ease-in-out_infinite]" />
-        <div className="absolute top-[40%] left-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full bg-gradient-to-tr from-[#ff6d00]/20 to-[#d82c23]/10 blur-[80px] sm:blur-[80px] animate-[blob-reverse_10s_ease-in-out_infinite]" />
+        <div className="absolute top-0 right-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-gradient-to-br from-[#061a5c]/30 to-[#0c2fa3]/10 blur-[80px] sm:blur-[100px] animate-[blob_8s_ease-in-out_infinite]" />
+        <div className="absolute top-[40%] left-[-10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full bg-gradient-to-tr from-[#59c414]/20 to-[#2a8500]/10 blur-[80px] sm:blur-[80px] animate-[blob-reverse_10s_ease-in-out_infinite]" />
       </div>
       <style>{`
         @keyframes blob {
@@ -122,7 +122,7 @@ export default function Gourmet() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative w-full overflow-hidden h-[30vh] md:h-[35vh] lg:h-[40vh] rounded-b-[32px] md:rounded-b-[48px] shadow-[0_10px_30px_rgba(216,44,35,0.2)] bg-gradient-to-r from-[#d82c23] to-[#ff6d00]"
+          className="relative w-full overflow-hidden h-[30vh] md:h-[35vh] lg:h-[40vh] rounded-b-[32px] md:rounded-b-[48px] shadow-[0_10px_30px_rgba(6,26,92,0.2)] bg-gradient-to-r from-[#061a5c] to-[#0c2fa3]"
         >
           {/* Back Button */}
           <button 
@@ -187,7 +187,7 @@ export default function Gourmet() {
               transition={{ delay: 0.2 }}
               className="mb-2 flex items-center gap-3"
             >
-              <div className="h-10 w-2 bg-gradient-to-b from-[#d82c23] to-[#ff6d00] rounded-full shadow-[0_0_10px_rgba(255,109,0,0.5)]"></div>
+              <div className="h-10 w-2 bg-gradient-to-b from-[#061a5c] to-[#0c2fa3] rounded-full shadow-[0_0_10px_rgba(255,109,0,0.5)]"></div>
               <div>
                 <h1 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-gray-100 tracking-tight">Premium Gourmet Restaurants</h1>
                 <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-1 font-medium">Exquisite dining experiences delivered to your doorstep</p>
@@ -201,7 +201,7 @@ export default function Gourmet() {
               transition={{ delay: 0.4 }}
               className="flex items-center gap-2"
             >
-              <span className="px-3 py-1 bg-[#ff6d00]/10 text-[#d82c23] dark:text-[#ff9d4a] rounded-full text-xs font-bold tracking-wider uppercase">
+              <span className="px-3 py-1 bg-[#59c414]/10 text-[#2a8500] dark:text-[#ff9d4a] rounded-full text-xs font-bold tracking-wider uppercase">
                 {showGourmetSkeleton ? '...' : gourmetRestaurants.length} GOURMET RESTAURANTS
               </span>
             </motion.div>
@@ -220,7 +220,7 @@ export default function Gourmet() {
                   <ArrowLeft className="w-8 h-8 text-red-500" />
                 </div>
                 <p className="text-red-500 dark:text-red-400 font-bold text-lg text-center mb-4">{error}</p>
-                <Button onClick={() => window.location.reload()} className="bg-gradient-to-r from-[#d82c23] to-[#ff6d00] hover:shadow-lg hover:-translate-y-1 transition-all rounded-full px-8">Retry</Button>
+                <Button onClick={() => window.location.reload()} className="bg-gradient-to-r from-[#061a5c] to-[#0c2fa3] hover:shadow-lg hover:-translate-y-1 transition-all rounded-full px-8">Retry</Button>
               </motion.div>
             )}
 
@@ -302,7 +302,7 @@ export default function Gourmet() {
                             <motion.div 
                               whileHover={{ y: -6, scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
-                              className="group h-full bg-white/90 dark:bg-[#1a1a1a]/90 backdrop-blur-xl rounded-[28px] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_40px_rgba(216,44,35,0.12)] border border-gray-100/50 dark:border-gray-800/50 transition-all duration-300 flex flex-col"
+                              className="group h-full bg-white/90 dark:bg-[#1a1a1a]/90 backdrop-blur-xl rounded-[28px] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_40px_rgba(6,26,92,0.12)] border border-gray-100/50 dark:border-gray-800/50 transition-all duration-300 flex flex-col"
                             >
                               {/* Image Section */}
                               <div className="relative h-48 sm:h-56 w-full overflow-hidden">
@@ -332,7 +332,7 @@ export default function Gourmet() {
                                     toggleFavorite(restaurantId)
                                   }}
                                 >
-                                  <Bookmark className={`h-5 w-5 ${isFavorite ? "fill-[#d82c23] text-[#d82c23]" : "text-white"}`} strokeWidth={2} />
+                                  <Bookmark className={`h-5 w-5 ${isFavorite ? "fill-[#2a8500] text-[#2a8500]" : "text-white"}`} strokeWidth={2} />
                                 </Button>
                               </div>
 
@@ -341,7 +341,7 @@ export default function Gourmet() {
                                 {/* Restaurant Name & Rating */}
                                 <div className="flex items-start justify-between gap-3 mb-3">
                                   <div className="flex-1 min-w-0">
-                                    <h3 className="text-xl font-black text-gray-900 dark:text-white line-clamp-1 group-hover:text-[#d82c23] transition-colors">
+                                    <h3 className="text-xl font-black text-gray-900 dark:text-white line-clamp-1 group-hover:text-[#2a8500] transition-colors">
                                       {restaurant.restaurantName || restaurant.name}
                                     </h3>
                                   </div>
@@ -354,7 +354,7 @@ export default function Gourmet() {
                                 {/* Delivery Time & Distance */}
                                 <div className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 mb-4 font-medium">
                                   <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 px-2.5 py-1 rounded-full">
-                                    <Clock className="h-3.5 w-3.5 text-[#ff6d00]" strokeWidth={2} />
+                                    <Clock className="h-3.5 w-3.5 text-[#59c414]" strokeWidth={2} />
                                     <span>{restaurant.estimatedDeliveryTime || '25-30 mins'}</span>
                                   </div>
                                   <span className="text-gray-300 dark:text-gray-700">•</span>
@@ -364,9 +364,9 @@ export default function Gourmet() {
                                 {/* Offer Badge */}
                                 <div className="mt-auto">
                                   {restaurant.offer ? (
-                                    <div className="flex items-center gap-2 text-sm bg-gradient-to-r from-[#d82c23]/10 to-[#ff6d00]/10 border border-[#ff6d00]/20 px-3 py-2 rounded-xl">
-                                      <BadgePercent className="h-4 w-4 text-[#d82c23]" strokeWidth={2} />
-                                      <span className="text-[#d82c23] dark:text-[#ff9d4a] font-bold">{restaurant.offer}</span>
+                                    <div className="flex items-center gap-2 text-sm bg-gradient-to-r from-[#061a5c]/10 to-[#0c2fa3]/10 border border-[#59c414]/20 px-3 py-2 rounded-xl">
+                                      <BadgePercent className="h-4 w-4 text-[#2a8500]" strokeWidth={2} />
+                                      <span className="text-[#2a8500] dark:text-[#ff9d4a] font-bold">{restaurant.offer}</span>
                                     </div>
                                   ) : (
                                     <div className="h-9"></div>
