@@ -27,6 +27,16 @@ export const SERVICE_PROVIDER_ENABLED = on(import.meta.env.VITE_ENABLE_SERVICE_P
 export const TAXI_ENABLED = on(import.meta.env.VITE_ENABLE_TAXI);
 export const MEDICAL_ENABLED = on(import.meta.env.VITE_ENABLE_MEDICAL);
 
+/**
+ * The customer food app on the public website (/food/user). Off: browsers are sent
+ * to the landing page. The mobile app's own shell always keeps it.
+ */
+const ua = typeof navigator === 'undefined' ? '' : navigator.userAgent.toLowerCase();
+const IN_APP_SHELL = typeof window !== 'undefined'
+  && (Boolean(window.flutter_inappwebview) || Boolean(window.ReactNativeWebView)
+    || window.location.protocol === 'file:' || ua.includes(' wv') || ua.includes('; wv'));
+export const CUSTOMER_WEB_ENABLED = on(import.meta.env.VITE_ENABLE_CUSTOMER_WEB) || IN_APP_SHELL;
+
 const OFF = new Set([
   ...(TAXI_ENABLED ? [] : ["taxi", "parcel", "porter", "taxiAndPorter", "heavyParcel"]),
   ...(MEDICAL_ENABLED ? [] : ["medical"]),

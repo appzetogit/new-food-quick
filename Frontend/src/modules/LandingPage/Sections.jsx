@@ -4,7 +4,7 @@ import {
   ArrowRight, BadgePercent, Bike, Check, CreditCard, FileText, Gift, Headphones, Heart, Leaf, MapPin,
   ShieldCheck, ShoppingBasket, Star, Store, UtensilsCrossed, Wallet,
 } from 'lucide-react'
-import { AISLES, BRAND, CARE, CRAVINGS, FEATURES, FOOD_HOME, PARTNER_TOOLS, SPOTLIGHTS, TRUST, VALUES, photo } from './content'
+import { AISLES, BRAND, CARE, CRAVINGS, FEATURES, PARTNER_TOOLS, SPOTLIGHTS, TRUST, VALUES, photo } from './content'
 import { InViewLottie } from './motion'
 
 const ICONS = {
@@ -203,7 +203,7 @@ export function Closing({ wrap }) {
       <div className={`${wrap} relative flex flex-col items-start justify-between gap-7 md:flex-row md:items-center`}>
         <h2 className="lp-reveal max-w-xl text-3xl font-extrabold tracking-tight sm:text-5xl">Hungry, or out of milk? Start here.</h2>
         <div className="flex flex-wrap gap-3">
-          <Link to={FOOD_HOME} className={`lp-press rounded-full bg-[#b6f23c] px-7 py-4 font-extrabold text-[#061a5c] ${FOCUS}`}>Order food</Link>
+          <a href="#food" className={`lp-press rounded-full bg-[#b6f23c] px-7 py-4 font-extrabold text-[#061a5c] ${FOCUS}`}>Explore food</a>
           <a href="#groceries" className={`lp-press rounded-full bg-white px-7 py-4 font-extrabold text-[#061a5c] ${FOCUS}`}>See groceries</a>
         </div>
       </div>

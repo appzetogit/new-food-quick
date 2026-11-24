@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { ArrowRight, Bike, ChevronDown, Menu, Search, ShoppingBasket, Star, UtensilsCrossed, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ArrowRight, Bike, ChevronDown, Menu, ShoppingBasket, Star, UtensilsCrossed, X } from 'lucide-react'
 import apiClient from '@food/api'
 import api from '../Taxi/shared/api/axiosInstance'
 import logo from './assets/aodo-logo.webp'
-import { AISLES, BRAND, CRAVINGS, FAQS, FOOD_HOME, PARTNERS, PHOTOS, STEPS, photo, searchPath } from './content'
+import { AISLES, BRAND, CRAVINGS, FAQS, PARTNERS, PHOTOS, STEPS, photo } from './content'
 import { BasketFill, InViewLottie, Leaves, RideLine, ScrollProgress, useCycle, useReveals, useScrolled } from './motion'
 import Company from './Company'
 import { Care, Closing, Features, PartnerTools, PhotoRibbon, Spotlights, TrustStrip } from './Sections'
@@ -57,7 +57,7 @@ function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Link to={`${FOOD_HOME}/auth/login`} className={`lp-press rounded-full bg-[#061a5c] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#0b2a8f] ${FOCUS}`}>Log in</Link>
+          <Link to="/partner" className={`lp-press rounded-full bg-[#061a5c] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#0b2a8f] ${FOCUS}`}>Join us</Link>
           <button type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} onClick={() => setOpen(!open)} className={`rounded-full p-2.5 text-[#061a5c] lg:hidden ${FOCUS}`}>
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -75,17 +75,10 @@ function Header() {
   )
 }
 
-const SEARCH_WORDS = CRAVINGS.map((c) => c.name.toLowerCase())
+const CRAVING_WORDS = CRAVINGS.map((c) => c.name.toLowerCase())
 
 function Hero() {
-  const navigate = useNavigate()
-  const [q, setQ] = useState('')
-  const [focused, setFocused] = useState(false)
-  const word = useCycle(SEARCH_WORDS, focused || q !== '')
-  const submit = (e) => {
-    e.preventDefault()
-    navigate(q.trim() ? searchPath(q.trim()) : FOOD_HOME)
-  }
+  const word = useCycle(CRAVING_WORDS, false)
   return (
     <section className="relative overflow-hidden bg-[#061a5c] text-white">
       {/* the leaf from the logo, as a sweep behind the headline */}
@@ -102,18 +95,13 @@ function Hero() {
           <p style={{ '--i': 1 }} className="lp-in mx-auto mt-4 max-w-xl text-base text-blue-100 sm:text-lg">
             Restaurant meals and fresh essentials from places near you, brought to your door.
           </p>
-          <form onSubmit={submit} role="search" style={{ '--i': 2 }} className="lp-in mx-auto mt-8 flex max-w-xl items-center gap-2 rounded-full bg-white p-2 shadow-2xl">
-            <Search aria-hidden className="ml-3 h-5 w-5 shrink-0 text-slate-400" />
-            <span className="relative min-w-0 flex-1">
-              {!q && (
-                <span aria-hidden className="pointer-events-none absolute inset-0 flex items-center gap-1 overflow-hidden whitespace-nowrap text-left text-base text-slate-500">
-                  Search <span key={word} className="lp-word inline-block font-semibold text-[#061a5c]">{word}</span>
-                </span>
-              )}
-              <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} aria-label="Search dishes or restaurants" className="w-full bg-transparent py-2 text-base text-slate-900 outline-none" />
-            </span>
-            <button type="submit" className={`lp-press rounded-full bg-[#b6f23c] px-5 py-3 text-sm font-extrabold text-[#061a5c] hover:bg-[#a4e02b] sm:px-7 ${FOCUS}`}>Search</button>
-          </form>
+          <div style={{ '--i': 2 }} className="lp-in mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a href="#food" className={`lp-press rounded-full bg-[#b6f23c] px-7 py-4 text-base font-extrabold text-[#061a5c] hover:bg-[#a4e02b] ${FOCUS}`}>
+              <span className="sr-only">Explore food</span>
+              <span aria-hidden>Craving <span key={word} className="lp-word inline-block">{word}</span>?</span>
+            </a>
+            <a href="#groceries" className={`lp-press rounded-full bg-white px-7 py-4 text-base font-extrabold text-[#061a5c] ${FOCUS}`}>Explore groceries</a>
+          </div>
         </div>
         <div className="mt-10 grid gap-4 sm:mt-14 md:grid-cols-2 md:gap-6">
           <div style={{ '--i': 3 }} className="lp-in relative h-60 overflow-hidden rounded-[28px] shadow-xl sm:h-72">
@@ -150,7 +138,6 @@ function Cravings() {
       <div className={WRAP}>
         <div className="flex items-end justify-between gap-4">
           <h2 className={`lp-reveal ${SECTION_TITLE}`}>What are you craving?</h2>
-          <Link to={FOOD_HOME} className={`shrink-0 rounded text-sm font-bold text-[#2b7a00] hover:underline ${FOCUS}`}>See all food</Link>
         </div>
         <ul className="mt-8 grid grid-cols-4 gap-x-3 gap-y-6 sm:gap-6 lg:grid-cols-8">
           {CRAVINGS.map((c, i) => (
@@ -199,7 +186,7 @@ function Groceries({ playStore, appStore }) {
     <section id="groceries" className="scroll-mt-20 bg-[#f0fbe0] py-14 sm:py-20">
       <div className={WRAP}>
         <h2 className={`lp-reveal ${SECTION_TITLE}`}>Stock up the kitchen</h2>
-        <p className="mt-2 text-slate-600">Groceries and daily essentials, ordered in the {BRAND} app.</p>
+        <p className="mt-2 text-slate-600">Groceries and daily essentials in the {BRAND} app.</p>
         <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-5">
           {AISLES.map((a, i) => (
             <li key={a.name} style={{ '--i': i % 4 }} className="lp-reveal lp-grow overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-[#59c414]/15">
@@ -305,8 +292,8 @@ function Footer({ settings }) {
           <p className="mt-3 flex items-center gap-2 text-sm text-blue-100"><Bike aria-hidden className="h-4 w-4 text-[#b6f23c]" />Food and groceries, delivered.</p>
         </div>
         <div className="flex flex-col gap-2.5">
-          <h3 className="font-bold">Order</h3>
-          <Link to={FOOD_HOME} className={link}>Food</Link>
+          <h3 className="font-bold">Explore</h3>
+          <a href="#food" className={link}>Food</a>
           <a href="#groceries" className={link}>Groceries</a>
           <a href="#about" className={link}>About</a>
           <Link to="/support" className={link}>Help and support</Link>

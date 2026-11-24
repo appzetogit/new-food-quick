@@ -9,7 +9,6 @@ export const photo = (id, w = 480, h) =>
   `https://images.unsplash.com/photo-${id}?w=${w}${h ? `&h=${h}` : ''}&q=70&auto=format&fit=crop`
 
 export const BRAND = 'Aodo'
-export const FOOD_HOME = '/food/user'
 
 export const PHOTOS = {
   thali: '1585937421612-70a008356fbe',
@@ -20,9 +19,6 @@ export const PHOTOS = {
   kitchen: '1556910103-1c02745aae4d',
   table: '1504674900247-0877df9cc836',
 }
-
-/** Opens the food app's search, which takes ?q=. */
-export const searchPath = (q) => `${FOOD_HOME}/search?q=${encodeURIComponent(q)}`
 
 export const CRAVINGS = [
   { name: 'Biryani', photo: '1589302168068-964664d93dc0' },
@@ -73,7 +69,7 @@ export const PARTNERS = [
 export const COMPANY = `${BRAND} brings restaurant meals and everyday groceries together. Customers order from restaurants and stores near them, and delivery partners bring it home.`
 
 export const ABOUT = [
-  { title: 'For customers', text: 'Food on the website and app, groceries in the app, and order tracking on a map.' },
+  { title: 'For customers', text: 'Food and groceries in one app, with order tracking on a map.' },
   { title: 'For restaurants and stores', text: 'Their own dashboard to list items, manage orders and reach people nearby.' },
   { title: 'For riders', text: 'Deliver food and groceries from one app, with every earning on record.' },
 ]
@@ -96,7 +92,7 @@ export const SPOTLIGHTS = [
     title: 'A restaurant for every mood',
     text: 'Quick bites, full meals and something sweet to finish. Search for a dish, or browse until something catches your eye.',
     points: ['Filter for vegetarian dishes', 'See ratings and reviews before you order', 'Save the places you like to your favourites'],
-    cta: 'Browse restaurants', to: '/food/user/restaurants', photo: '1565557623262-b51c2513a641', alt: 'A plate of curry with naan',
+    photo: '1565557623262-b51c2513a641', alt: 'A plate of curry with naan',
   },
   {
     title: 'Fresh produce and the weekly basics',
@@ -108,7 +104,7 @@ export const SPOTLIGHTS = [
     title: 'Going out instead? Book a table',
     text: 'Find a place to eat, pick a time and reserve your table before you leave home.',
     points: ['Explore places to dine', 'Request a table for your group', 'Keep your bookings in your account'],
-    cta: 'Explore dining', to: '/food/user/dining', photo: '1414235077428-338989a2e8c0', alt: 'A plated dish on a restaurant table',
+    photo: '1414235077428-338989a2e8c0', alt: 'A plated dish on a restaurant table',
   },
 ]
 
@@ -154,7 +150,7 @@ export const VALUES = [
 
 export const FAQS = [
   { question: `What can I order on ${BRAND}?`, answer: 'Meals from restaurants, and groceries and daily essentials from stores near you.' },
-  { question: 'How do I order groceries?', answer: `Groceries are ordered in the ${BRAND} app. Food can be ordered here on the website too.` },
+  { question: 'How do I order groceries?', answer: `In the ${BRAND} app. Choose a store near you, fill your basket and check out.` },
   { question: 'Can I track my order?', answer: 'Yes. Once a rider picks up your order you can follow them on the map.' },
   { question: 'How do I sell or deliver with you?', answer: 'Use the partner section on this page. Restaurants, stores and riders each have their own sign-up.' },
   { question: 'How can I pay?', answer: 'Pay online, or in cash where the restaurant or store allows it.' },

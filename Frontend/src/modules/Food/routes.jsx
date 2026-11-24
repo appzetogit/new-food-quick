@@ -1,3 +1,4 @@
+import { CUSTOMER_WEB_ENABLED } from "@/config/features"
 import { Routes, Route, Navigate, useLocation } from "react-router-dom"
 import { useEffect, Suspense, lazy } from "react"
 import ProtectedRoute from "@food/components/ProtectedRoute"
@@ -93,7 +94,7 @@ export default function App() {
           {/* User Module - Explicitly mapped to /user */}
           <Route
             path="user/*"
-            element={<UserRouter />}
+            element={CUSTOMER_WEB_ENABLED ? <UserRouter /> : <Navigate to="/" replace />}
           />
 
           {/* Restaurant Module - Already mapped to /restaurant */}
