@@ -67,7 +67,7 @@ export const ABOUT = [
 ]
 
 // Hidden on the page until filled in with the owner's real details and plans.
-export const OWNER = { name: '', role: '', bio: '', photo: '', phone: '', email: '' }
+export const OWNER = { name: 'Mrs. Manisha Patil', role: 'Director', bio: '', photo: '', phone: '+91 97121 16638', email: '' }
 // { title, text, when } -- when is optional, e.g. '2027'
 export const PLANS = []
 
