@@ -5,14 +5,16 @@ import apiClient from '@food/api'
 import api from '../Taxi/shared/api/axiosInstance'
 import logo from './assets/aodo-logo.webp'
 import { AISLES, BRAND, CRAVINGS, FAQS, FOOD_HOME, PARTNERS, PHOTOS, STEPS, photo, searchPath } from './content'
-import { BasketFill, InViewLottie, Leaves, RideLine, useCycle, useReveals, useScrolled } from './motion'
+import { BasketFill, InViewLottie, Leaves, RideLine, ScrollProgress, useCycle, useReveals, useScrolled } from './motion'
 import Company from './Company'
+import { Care, Closing, Features, PartnerTools, PhotoRibbon, Spotlights, TrustStrip } from './Sections'
 import './landing.css'
 
 const NAV = [
   { label: 'Food', href: '#food' },
   { label: 'Groceries', href: '#groceries' },
   { label: 'How it works', href: '#how' },
+  { label: 'Features', href: '#features' },
   { label: 'About', href: '#about' },
   { label: 'Partner with us', href: '#partners' },
 ]
@@ -68,6 +70,7 @@ function Header() {
           ))}
         </nav>
       )}
+      <ScrollProgress />
     </header>
   )
 }
@@ -153,7 +156,7 @@ function Cravings() {
         </div>
         <ul className="mt-8 grid grid-cols-4 gap-x-3 gap-y-6 sm:gap-6 lg:grid-cols-8">
           {CRAVINGS.map((c, i) => (
-            <li key={c.name} className="lp-reveal" style={{ '--i': i }}>
+            <li key={c.name} className="lp-reveal" style={{ '--i': i % 8 }}>
               <Link to={searchPath(c.name)} className={`lp-pop block rounded-2xl text-center ${FOCUS}`}>
                 <img src={photo(c.photo, 240, 240)} alt="" loading="lazy" className="aspect-square w-full rounded-full object-cover shadow-md" />
                 <span className="mt-2.5 block text-xs font-bold text-slate-700 sm:text-sm">{c.name}</span>
@@ -368,13 +371,20 @@ export default function LandingPage() {
       <Header />
       <main>
         <Hero />
+        <TrustStrip wrap={WRAP} />
         <Cravings />
+        <PhotoRibbon />
         <Restaurants items={restaurants} />
+        <Spotlights wrap={WRAP} title={SECTION_TITLE} />
         <Groceries playStore={storeUrl(settings?.play_store_url)} appStore={storeUrl(settings?.app_store_url)} />
         <HowItWorks />
+        <Features wrap={WRAP} title={SECTION_TITLE} />
+        <Care wrap={WRAP} title={SECTION_TITLE} />
         <Company wrap={WRAP} title={SECTION_TITLE} />
         <Partners />
+        <PartnerTools wrap={WRAP} />
         <Faq items={faqs} />
+        <Closing wrap={WRAP} />
       </main>
       <Footer settings={settings} />
     </div>

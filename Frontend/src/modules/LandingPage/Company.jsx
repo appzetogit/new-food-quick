@@ -1,4 +1,5 @@
 import { Mail, Phone } from 'lucide-react'
+import { Values } from './Sections'
 import { ABOUT, BRAND, COMPANY, OWNER, PLANS, PHOTOS, photo } from './content'
 
 /**
@@ -29,6 +30,8 @@ export default function Company({ wrap, title }) {
           ))}
         </ul>
 
+        <Values />
+
         {OWNER.name && (
           <div className="lp-reveal mt-16 overflow-hidden rounded-[28px] bg-[#061a5c] text-white sm:flex">
             {OWNER.photo && <img src={OWNER.photo} alt={OWNER.name} loading="lazy" className="h-72 w-full object-cover sm:h-auto sm:w-72" />}
@@ -37,7 +40,7 @@ export default function Company({ wrap, title }) {
               {OWNER.role && <p className="mt-1 font-bold text-[#b6f23c]">{OWNER.role}</p>}
               {OWNER.bio && <p className="mt-4 max-w-2xl leading-relaxed text-blue-100">{OWNER.bio}</p>}
               <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
-                {OWNER.phone && <a href={`tel:${OWNER.phone.replace(/s/g, "")}`} className="inline-flex items-center gap-2"><Phone aria-hidden className="h-4 w-4" />{OWNER.phone}</a>}
+                {OWNER.phone && <a href={`tel:${OWNER.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-2"><Phone aria-hidden className="h-4 w-4" />{OWNER.phone}</a>}
                 {OWNER.email && <a href={`mailto:${OWNER.email}`} className="inline-flex items-center gap-2"><Mail aria-hidden className="h-4 w-4" />{OWNER.email}</a>}
               </div>
             </div>

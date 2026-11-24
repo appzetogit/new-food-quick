@@ -48,6 +48,27 @@ export function useScrolled() {
   return scrolled
 }
 
+/** A thin line under the header showing how far down the page you are. */
+export function ScrollProgress() {
+  const ref = useRef(null)
+  useEffect(() => {
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const room = document.documentElement.scrollHeight - window.innerHeight
+      if (ref.current) ref.current.style.transform = `scaleX(${room > 0 ? Math.min(1, window.scrollY / room) : 0})`
+    }
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(frame)
+    }
+  }, [])
+  return <span ref={ref} aria-hidden className="lp-progress" />
+}
+
 /** Steps through `words`, resting while `paused` or when motion is not wanted. */
 export function useCycle(words, paused, everyMs = 2400) {
   const [i, setI] = useState(0)

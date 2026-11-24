@@ -33,6 +33,14 @@ export const CRAVINGS = [
   { name: 'Noodles', photo: '1585032226651-759b368d7246' },
   { name: 'Salad', photo: '1512621776951-a57141f2eefd' },
   { name: 'Cake', photo: '1578985545062-69928b1d9587' },
+  { name: 'Momos', photo: '1534422298391-e4f8c172dddb' },
+  { name: 'Paneer', photo: '1631452180519-c014fe946bc7' },
+  { name: 'Samosa', photo: '1601050690597-df0568f70950' },
+  { name: 'Rolls', photo: '1626700051175-6818013e1d4f' },
+  { name: 'Thali', photo: '1546833999-b9f581a1996d' },
+  { name: 'Sandwich', photo: '1528735602780-2552fd46c7af' },
+  { name: 'Naan', photo: '1565557623262-b51c2513a641' },
+  { name: 'Ice cream', photo: '1497034825429-c343d7c6a68f' },
 ]
 
 export const AISLES = [
@@ -44,6 +52,10 @@ export const AISLES = [
   { name: 'Tea & coffee', photo: '1509042239860-f550ce710b93' },
   { name: 'Sweet treats', photo: '1551024601-bec78aea704b' },
   { name: 'Home cleaning', photo: '1583947215259-38e31be8751f' },
+  { name: 'Rice', photo: '1586201375761-83865001e31c' },
+  { name: 'Spices', photo: '1596040033229-a9821ebd058d' },
+  { name: 'Dry fruits', photo: '1508061253366-f7da158b6d46' },
+  { name: 'Pulses', photo: '1515543904379-3d757afe72e4' },
 ]
 
 export const STEPS = [
@@ -71,9 +83,84 @@ export const OWNER = { name: 'Mrs. Manisha Patil', role: 'Director', bio: '', ph
 // { title, text, when } -- when is optional, e.g. '2027'
 export const PLANS = []
 
+// Everything below describes what the app does today. No numbers are claimed.
+export const TRUST = [
+  { icon: 'basket', title: 'Food and groceries', text: 'Restaurants and stores under one name' },
+  { icon: 'map', title: 'Follow your order', text: 'See your rider on the map' },
+  { icon: 'card', title: 'Pay your way', text: 'Online, or cash where it is allowed' },
+  { icon: 'help', title: 'Help when you need it', text: 'Raise a ticket from your account' },
+]
+
+export const SPOTLIGHTS = [
+  {
+    title: 'A restaurant for every mood',
+    text: 'Quick bites, full meals and something sweet to finish. Search for a dish, or browse until something catches your eye.',
+    points: ['Filter for vegetarian dishes', 'See ratings and reviews before you order', 'Save the places you like to your favourites'],
+    cta: 'Browse restaurants', to: '/food/user/restaurants', photo: '1565557623262-b51c2513a641', alt: 'A plate of curry with naan',
+  },
+  {
+    title: 'Fresh produce and the weekly basics',
+    text: 'Fruit, vegetables, dairy, grains and home care, sold by stores around you and ordered in the app.',
+    points: ['Shop by category', 'Choose the size or pack you want', 'Order from stores near you'],
+    photo: '1518843875459-f738682238a6', alt: 'Tomatoes, carrots, radishes and other vegetables',
+  },
+  {
+    title: 'Going out instead? Book a table',
+    text: 'Find a place to eat, pick a time and reserve your table before you leave home.',
+    points: ['Explore places to dine', 'Request a table for your group', 'Keep your bookings in your account'],
+    cta: 'Explore dining', to: '/food/user/dining', photo: '1414235077428-338989a2e8c0', alt: 'A plated dish on a restaurant table',
+  },
+]
+
+export const FEATURES = [
+  { icon: 'percent', title: 'Offers and coupons', text: 'See the deals running at restaurants near you.' },
+  { icon: 'leaf', title: 'Veg mode', text: 'Switch it on to see vegetarian dishes.' },
+  { icon: 'heart', title: 'Favourites', text: 'Keep your usual places a tap away.' },
+  { icon: 'wallet', title: 'Wallet', text: 'Hold a balance and see every entry.' },
+  { icon: 'gift', title: 'Refer a friend', text: 'Share your invite from your profile.' },
+  { icon: 'file', title: 'Invoices', text: 'Open the bill for any past order.' },
+  { icon: 'star', title: 'Ratings and reviews', text: 'Read what others thought, then add yours.' },
+  { icon: 'map', title: 'Saved addresses', text: 'Home, work, or wherever you are today.' },
+]
+
+export const CARE = [
+  { icon: 'food', title: 'Food licence details', text: 'Restaurants add their FSSAI licence, and its expiry is tracked.' },
+  { icon: 'bike', title: 'Rider documents', text: 'Riders submit their documents when they join.' },
+  { icon: 'shield', title: 'Secure sign-in', text: 'You sign in with a one-time code sent to your phone.' },
+  { icon: 'help', title: 'Support tickets', text: 'Report a problem with an order and follow the reply.' },
+]
+
+export const PARTNER_TOOLS = [
+  {
+    name: 'Restaurants', title: 'Run the kitchen, not the paperwork', text: 'Orders, menu and money in one dashboard.', cta: 'List your restaurant', to: '/partner',
+    points: ['Menu, categories and combos', 'Live orders and timings', 'Coupons and offers', 'Ratings and reviews', 'Earnings and withdrawals', 'Table reservations'],
+  },
+  {
+    name: 'Stores', title: 'Your shelf, open to the neighbourhood', text: 'Keep products and stock up to date as you sell.', cta: 'Open your store', to: '/partner',
+    points: ['Products and pack sizes', 'Stock and inventory', 'Live orders', 'Delivery radius', 'Reports to download', 'Earnings and withdrawals'],
+  },
+  {
+    name: 'Riders', title: 'Ride, deliver, see what you earned', text: 'One app for every delivery you take.', cta: 'Ride with us', to: '/food/delivery/welcome',
+    points: ['New order alerts', 'Pickup and drop on the map', 'Delivery history', 'Earnings and payouts', 'Help and support tickets', 'Profile and documents'],
+  },
+]
+
+// Draft wording, for the company to confirm.
+export const VALUES = [
+  { title: 'Our mission', text: 'Make everyday food and essentials simple to order, from people and places close to home.' },
+  { title: 'Our vision', text: 'One dependable app a neighbourhood can turn to for meals, groceries and work.' },
+  { title: 'Our values', text: 'Be clear about prices, fair to partners and quick to put things right.' },
+]
+
 export const FAQS = [
   { question: `What can I order on ${BRAND}?`, answer: 'Meals from restaurants, and groceries and daily essentials from stores near you.' },
   { question: 'How do I order groceries?', answer: `Groceries are ordered in the ${BRAND} app. Food can be ordered here on the website too.` },
   { question: 'Can I track my order?', answer: 'Yes. Once a rider picks up your order you can follow them on the map.' },
   { question: 'How do I sell or deliver with you?', answer: 'Use the partner section on this page. Restaurants, stores and riders each have their own sign-up.' },
+  { question: 'How can I pay?', answer: 'Pay online, or in cash where the restaurant or store allows it.' },
+  { question: 'Can I book a table?', answer: 'Yes. Open Dining, choose a restaurant and request a table.' },
+  { question: 'Can I see only vegetarian food?', answer: 'Yes. Turn on veg mode on the food home page.' },
+  { question: 'Where do I find my bill?', answer: 'Open your orders, choose one, and view its invoice.' },
+  { question: 'Something is wrong with my order. What do I do?', answer: 'Open Help from your order and send the details. You can follow the reply in your account.' },
+  { question: 'How do I cancel an order?', answer: 'Open the order to see whether it can still be cancelled. The cancellation and refund policies are linked at the bottom of this page.' },
 ]
