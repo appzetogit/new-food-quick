@@ -116,7 +116,7 @@ function Hero() {
           </form>
         </div>
         <div className="mt-10 grid gap-4 sm:mt-14 md:grid-cols-2 md:gap-6">
-          <Link to={FOOD_HOME} style={{ '--i': 3 }} className={`lp-in group relative block h-60 overflow-hidden rounded-[28px] shadow-xl sm:h-72 ${FOCUS}`}>
+          <div style={{ '--i': 3 }} className="lp-in relative h-60 overflow-hidden rounded-[28px] shadow-xl sm:h-72">
             <img src={photo(PHOTOS.thali, 900, 600)} alt="Bowls of Indian curries with rice" className="lp-zoom h-full w-full object-cover" />
             <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
             <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
@@ -125,10 +125,9 @@ function Hero() {
                 <span className="block text-2xl font-extrabold sm:text-3xl">Order food</span>
                 <span className="block text-sm text-white/85">From restaurants near you</span>
               </span>
-              <span className="rounded-full bg-[#b6f23c] p-3 text-[#061a5c]"><ArrowRight aria-hidden className="lp-arrow h-5 w-5" /></span>
             </span>
-          </Link>
-          <a href="#groceries" style={{ '--i': 4 }} className={`lp-in group relative block h-60 overflow-hidden rounded-[28px] shadow-xl sm:h-72 ${FOCUS}`}>
+          </div>
+          <div style={{ '--i': 4 }} className="lp-in relative h-60 overflow-hidden rounded-[28px] shadow-xl sm:h-72">
             <img src={photo(PHOTOS.produce, 900, 600)} alt="Shelves of fresh fruit and vegetables" className="lp-zoom h-full w-full object-cover" />
             <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
             <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
@@ -137,9 +136,8 @@ function Hero() {
                 <span className="block text-2xl font-extrabold sm:text-3xl">Shop groceries</span>
                 <span className="block text-sm text-white/85">Fresh and everyday essentials</span>
               </span>
-              <span className="rounded-full bg-[#b6f23c] p-3 text-[#061a5c]"><ArrowRight aria-hidden className="lp-arrow h-5 w-5" /></span>
             </span>
-          </a>
+          </div>
         </div>
       </div>
     </section>
@@ -157,10 +155,10 @@ function Cravings() {
         <ul className="mt-8 grid grid-cols-4 gap-x-3 gap-y-6 sm:gap-6 lg:grid-cols-8">
           {CRAVINGS.map((c, i) => (
             <li key={c.name} className="lp-reveal" style={{ '--i': i % 8 }}>
-              <Link to={searchPath(c.name)} className={`lp-pop block rounded-2xl text-center ${FOCUS}`}>
+              <div className="lp-pop text-center">
                 <img src={photo(c.photo, 240, 240)} alt="" loading="lazy" className="aspect-square w-full rounded-full object-cover shadow-md" />
                 <span className="mt-2.5 block text-xs font-bold text-slate-700 sm:text-sm">{c.name}</span>
-              </Link>
+              </div>
             </li>
           ))}
         </ul>
@@ -178,7 +176,7 @@ function Restaurants({ items }) {
         <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((r, i) => (
             <li key={r.id} className="lp-reveal" style={{ '--i': i % 4 }}>
-              <Link to={`${FOOD_HOME}/restaurants/${r.slug}`} className={`lp-grow block overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200/70 transition-shadow hover:shadow-lg ${FOCUS}`}>
+              <div className="lp-grow overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200/70">
                 <img src={r.image || photo(PHOTOS.thali, 480, 320)} alt="" loading="lazy" className="h-40 w-full object-cover" />
                 <span className="block p-4">
                   <span className="flex items-center justify-between gap-2">
@@ -187,7 +185,7 @@ function Restaurants({ items }) {
                   </span>
                   {r.cuisine && <span className="mt-1 block truncate text-sm text-slate-500">{r.cuisine}</span>}
                 </span>
-              </Link>
+              </div>
             </li>
           ))}
         </ul>
