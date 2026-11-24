@@ -41,12 +41,13 @@ const isStaticOtpPhone = (cleanPhone) =>
   (testOtpAllowed() && TEST_PHONES.includes(cleanPhone)) || defaultOtpForEveryone();
 
 // Fixed dummy OTP for a small, explicit set of QA / app-review test numbers.
-// Always on (independent of ALLOW_TEST_OTP / NODE_ENV) but scoped to these numbers.
+// Outside production only, and scoped to these numbers.
 // NOTE: service-provider normally uses 6-digit OTPs; this hands these numbers the
 // 4-digit code '1234'. Verification still runs the normal hashed-record path.
 const DUMMY_OTP_PHONES = ['7470311228', '8120743311', '7470311226', '7470311227', '7470311229'];
 const DUMMY_OTP_CODE = '1234';
-const isDummyOtpPhone = (cleanPhone) => DUMMY_OTP_PHONES.includes(cleanPhone);
+const isDummyOtpPhone = (cleanPhone) =>
+  process.env.NODE_ENV !== 'production' && DUMMY_OTP_PHONES.includes(cleanPhone);
 
 /**
  * True when this number is served the static code AND therefore must not be sent a

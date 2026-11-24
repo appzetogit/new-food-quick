@@ -35,13 +35,13 @@ const getStaticUserOtpConfig = () => ({
   otp: String(env.sms?.staticOtpCode || TEST_LOGIN_OTP_CODE).trim(),
 });
 // Fixed dummy OTP for a small, explicit set of QA / app-review test numbers.
-// Applies in production but scoped to these numbers only; SMS suppressed (isStatic).
+// Outside production only; SMS suppressed (isStatic).
 const DUMMY_OTP_PHONES = ['7470311228', '8120743311', '7470311226', '7470311227', '7470311229'];
 const DUMMY_OTP_CODE = '1234';
 
 const resolveUserOtpForPhone = (phone) => {
   const normalizedPhone = normalizeUserPhone(phone);
-  if (DUMMY_OTP_PHONES.includes(normalizedPhone)) {
+  if (process.env.NODE_ENV !== 'production' && DUMMY_OTP_PHONES.includes(normalizedPhone)) {
     return { otp: DUMMY_OTP_CODE, isStatic: true };
   }
   const staticOtpConfig = getStaticUserOtpConfig();

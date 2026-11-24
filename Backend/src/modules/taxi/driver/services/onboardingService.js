@@ -251,6 +251,9 @@ const getStaticDriverOtpConfig = () => ({
 });
 const resolveDriverOnboardingOtpForPhone = (phone) => {
   const normalizedPhone = normalizePhone(phone);
+  // Known codes are a sign-in bypass: production always gets a random one.
+  if (process.env.NODE_ENV === 'production') return { otp: generateOtp(), isStatic: false };
+
   const staticOtpConfig = getStaticDriverOtpConfig();
   const defaultOtpEnabled = isTruthy(env.sms?.useDefaultOtp);
 

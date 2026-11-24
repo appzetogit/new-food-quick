@@ -193,11 +193,9 @@ export class OtpDeliveryError extends Error {
  *                            question nobody can answer.
  */
 // Fixed dummy OTP for a small, explicit set of QA / app-review test numbers.
-// These bypass SMS and always receive '1234' regardless of environment, but the
-// scope is strictly these numbers. Verification still runs the normal hashed-record
-// path (TTL, attempt and rate limits all apply) -- no verify-side bypass is added.
+// Accepted at verify time, outside production only.
 const DUMMY_OTP_PHONES = ['7470311228', '8120743311', '7470311226', '7470311227', '7470311229'];
-const isDummyOtpPhone = (phone) => DUMMY_OTP_PHONES.includes(normalizeOtpPhone(phone));
+const isDummyOtpPhone = (phone) => config.nodeEnv !== 'production' && DUMMY_OTP_PHONES.includes(normalizeOtpPhone(phone));
 
 export const createOrUpdateOtp = async (phone, scope = 'default', { service = OTP_SERVICES.FOOD } = {}) => {
     const normalizedPhone = normalizeOtpPhone(phone);
@@ -310,19 +308,9 @@ export const verifyOtp = async (phone, otp, scope = 'default') => {
 
     const otpStr = String(otp ?? '').trim();
 
-    // Dummy / QA numbers: '1234' is ALWAYS accepted, IN ADDITION to the real OTP
-    // that was SMS-ed to them (createOrUpdateOtp now issues a real code + SMS for
-    // these too). Scoped to the explicit whitelist and intentionally works in
-    // production, so an app reviewer can sign in with 1234 while the same number
-    // can also receive and use a real SMS OTP.
-    if (isDummyOtpPhone(normalizedPhone) && otpStr === '1234') {
-        logger.info(`[OTP VERIFY] Dummy-number '1234' accepted for phone=${normalizedPhone} scope=${normalizedScope}`);
-        return { valid: true };
-    }
-
     // ── Development sign-in shortcuts ──────────────────────────────────────────
     //
-    // All three of these return { valid: true } WITHOUT comparing against the issued
+    // All of these return { valid: true } WITHOUT comparing against the issued
     // OTP, so each one is an authentication bypass. They exist so local development
     // and QA do not need working SMS delivery.
     //
@@ -358,7 +346,13 @@ export const verifyOtp = async (phone, otp, scope = 'default') => {
             return { valid: true };
         }
 
-        // 3. Default OTP bypass ('1234') when useDefaultOtp is enabled
+        // 3. Dummy / QA numbers accept '1234' as well as the OTP they were sent.
+        if (isDummyOtpPhone(normalizedPhone) && otpStr === '1234') {
+            logger.info(`[OTP VERIFY] Dummy-number '1234' accepted for phone=${normalizedPhone} scope=${normalizedScope}`);
+            return { valid: true };
+        }
+
+        // 4. Default OTP bypass ('1234') when useDefaultOtp is enabled
         if (config.useDefaultOtp && otpStr === '1234') {
             logger.info(`[OTP VERIFY] Default OTP bypass ('1234') matched for phone=${normalizedPhone} scope=${normalizedScope}`);
             return { valid: true };

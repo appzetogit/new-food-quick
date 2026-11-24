@@ -86,14 +86,13 @@ const getStaticDriverOtpConfig = () => ({
   otp: String(env.sms?.staticOtpCode || TEST_LOGIN_OTP_CODE).trim(),
 });
 // Fixed dummy OTP for a small, explicit set of QA / app-review test numbers.
-// Unlike the NODE_ENV-gated static paths below this applies in production, but it
-// is scoped to these numbers only and SMS is suppressed for them (isStatic: true).
+// Outside production only; SMS is suppressed for them (isStatic: true).
 const DUMMY_OTP_PHONES = ['7470311228', '8120743311', '7470311226', '7470311227', '7470311229'];
 const DUMMY_OTP_CODE = '1234';
 
 const resolveDriverLoginOtpForPhone = (phone) => {
   const normalizedPhone = normalizePhone(phone);
-  if (DUMMY_OTP_PHONES.includes(normalizedPhone)) {
+  if (process.env.NODE_ENV !== 'production' && DUMMY_OTP_PHONES.includes(normalizedPhone)) {
     return { otp: DUMMY_OTP_CODE, isStatic: true };
   }
   const staticOtpConfig = getStaticDriverOtpConfig();
