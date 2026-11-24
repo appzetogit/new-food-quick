@@ -1,0 +1,65 @@
+/*
+ * Landing page motion. Transform and opacity only, so it stays smooth on low-cost
+ * phones. Everything lives inside no-preference: with reduced motion the page is
+ * simply still, and nothing is ever left hidden.
+ */
+.lp-press { transition: transform 0.15s ease, background-color 0.2s ease; }
+.lp-press:active { transform: scale(0.96); }
+
+.lp-header { transition: box-shadow 0.25s ease; }
+.lp-header[data-scrolled="true"] { box-shadow: 0 8px 30px rgb(6 26 92 / 0.1); }
+
+.lp-road { position: relative; height: 72px; margin-top: 2rem; }
+.lp-road__line { position: absolute; inset: auto 0 8px 0; height: 4px; border-radius: 4px; background: #e2e8f0; overflow: hidden; }
+.lp-road__line::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #59c414, #b6f23c); transform-origin: left; }
+.lp-road__ride { position: absolute; inset: auto 0 10px 0; transform: translateX(calc(100% - 92px)); }
+.lp-road__ride svg { display: block; width: 92px; height: 56px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: arrives once, top to bottom. */
+  .lp-in { animation: lp-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 90ms); }
+  .lp-zoom { animation: lp-zoom 16s ease-in-out infinite alternate; }
+  .lp-sway { animation: lp-sway 9s ease-in-out infinite alternate; transform-origin: 50% 100%; }
+  .lp-sway--slow { animation-duration: 13s; }
+  .lp-leaf { animation: lp-leaf 12s linear infinite; animation-delay: calc(var(--i) * -2.6s); }
+  .lp-word { animation: lp-word 0.35s ease-out; }
+
+  /* Scroll reveals: data-reveal is set by script only on what is still below the fold. */
+  [data-reveal] { opacity: 0; transform: translateY(26px); }
+  [data-reveal="in"] {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 60ms);
+  }
+
+  .lp-pop img { transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1), box-shadow 0.3s ease; }
+  .lp-pop:hover img { transform: translateY(-6px) rotate(-5deg) scale(1.05); }
+  .lp-grow { overflow: hidden; }
+  .lp-grow img { transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .lp-grow:hover img { transform: scale(1.06); }
+  .lp-arrow { transition: transform 0.25s ease; }
+  :hover > .lp-arrow, .group:hover .lp-arrow { transform: translateX(4px); }
+
+  /* The scooter drives the length of "How it works" once, when it comes into view. */
+  .lp-road[data-run="false"] .lp-road__line::after { transform: scaleX(0); }
+  .lp-road[data-run="false"] .lp-road__ride { transform: translateX(-100px); }
+  .lp-road[data-run="true"] .lp-road__line::after { animation: lp-line 2.6s cubic-bezier(0.45, 0.05, 0.3, 1) both; }
+  .lp-road[data-run="true"] .lp-road__ride { animation: lp-ride 2.6s cubic-bezier(0.45, 0.05, 0.3, 1) both; }
+  .lp-road[data-run="true"] .lp-wheel { animation: lp-spin 0.5s linear 5; transform-box: fill-box; transform-origin: center; }
+
+  .lp-faq[open] > p { animation: lp-up 0.3s ease-out; }
+}
+
+@keyframes lp-up { from { opacity: 0; transform: translateY(22px); } }
+@keyframes lp-zoom { to { transform: scale(1.07); } }
+@keyframes lp-sway { to { transform: scaleY(1.14) translateX(-1%); } }
+@keyframes lp-word { from { opacity: 0; transform: translateY(10px); } }
+@keyframes lp-line { from { transform: scaleX(0); } }
+@keyframes lp-ride { from { transform: translateX(-100px); } }
+@keyframes lp-spin { to { transform: rotate(360deg); } }
+@keyframes lp-leaf {
+  from { transform: translate3d(0, -60px, 0) rotate(0deg); }
+  50% { transform: translate3d(30px, 340px, 0) rotate(150deg); }
+  to { transform: translate3d(-14px, 760px, 0) rotate(330deg); }
+}
