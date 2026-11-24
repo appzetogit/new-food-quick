@@ -58,7 +58,7 @@ export default function BottomNavigation() {
                       damping: 32,
                       mass: 1,
                     }}
-                    className={`absolute -inset-y-1.5 bg-[#061a5c] rounded-[18px] shadow-[0_8px_20px_rgba(6,26,92,0.35)] ${isValueShelf ? "-inset-x-2.5" : "-inset-x-3.5"
+                    className={`absolute -inset-y-1.5 bg-[#ff3d00] rounded-[18px] shadow-[0_8px_20px_rgba(255,61,0,0.35)] ${isValueShelf ? "-inset-x-2.5" : "-inset-x-3.5"
                       }`}
                   />
                 )}

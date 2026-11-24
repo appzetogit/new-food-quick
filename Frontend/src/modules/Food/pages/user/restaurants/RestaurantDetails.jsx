@@ -46,7 +46,6 @@ import AnimatedPage from "@food/components/user/AnimatedPage"
 import { useCart } from "@food/context/CartContext"
 import { useProfile } from "@food/context/ProfileContext"
 import AddToCartAnimation from "@food/components/user/AddToCartAnimation"
-import QuantityPop from "@food/components/user/QuantityPop"
 import { getCompanyNameAsync } from "@food/utils/businessSettings"
 import { isModuleAuthenticated } from "@food/utils/auth"
 import { getRestaurantAvailabilityStatus } from "@food/utils/restaurantAvailability"
@@ -2115,7 +2114,7 @@ function RestaurantDetailsContent() {
                     placeholder="Search for dishes..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2 rounded-full border border-gray-200 dark:border-gray-800 shadow-sm bg-white dark:bg-[#1a1a1a] text-sm dark:text-white focus:outline-none focus:ring-2 focus:ring-[#2a8500] focus:border-transparent"
+                    className="w-full pl-10 pr-10 py-2 rounded-full border border-gray-200 dark:border-gray-800 shadow-sm bg-white dark:bg-[#1a1a1a] text-sm dark:text-white focus:outline-none focus:ring-2 focus:ring-[#EB590E] focus:border-transparent"
                     autoFocus
                     onBlur={() => {
                       if (!searchQuery) {
@@ -2212,7 +2211,7 @@ function RestaurantDetailsContent() {
           {/* Offers */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-sm overflow-hidden">
-              <Tag className="h-4 w-4 text-[#2a8500]" />
+              <Tag className="h-4 w-4 text-[#EB590E]" />
               <div className="relative h-5 overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -2221,7 +2220,7 @@ function RestaurantDetailsContent() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -16, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="text-[#2a8500] font-medium inline-block"
+                    className="text-[#EB590E] font-medium inline-block"
                   >
                     {highlightOffers[highlightIndex]}
                   </motion.span>
@@ -2294,7 +2293,7 @@ function RestaurantDetailsContent() {
                     onClick={() => setSelectedMenuCategory("all")}
                     className={`flex items-center gap-2 whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors ${
                       selectedMenuCategory === "all"
-                        ? "border-[#2a8500] bg-[#FFF1E8] text-[#2a8500]"
+                        ? "border-[#EB590E] bg-[#FFF1E8] text-[#EB590E]"
                         : "border-gray-300 bg-white text-gray-700"
                     }`}
                   >
@@ -2307,7 +2306,7 @@ function RestaurantDetailsContent() {
                       onClick={() => setSelectedMenuCategory(category.id)}
                       className={`flex items-center gap-2 whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors ${
                         selectedMenuCategory === category.id
-                          ? "border-[#2a8500] bg-[#FFF1E8] text-[#2a8500]"
+                          ? "border-[#EB590E] bg-[#FFF1E8] text-[#EB590E]"
                           : "border-gray-300 bg-white text-gray-700"
                       }`}
                     >
@@ -2476,7 +2475,7 @@ function RestaurantDetailsContent() {
                                 delete dishCardRefs.current[item.id]
                               }
                             }}
-                            className={`flex gap-4 p-4 border-b border-gray-100 last:border-none relative cursor-pointer transition-all duration-300 ${highlightedDishId === item.id ? "bg-primary-orange/5 ring-2 ring-[#2a8500] ring-inset dark:bg-accent-orange/30/20" : ""}`}
+                            className={`flex gap-4 p-4 border-b border-gray-100 last:border-none relative cursor-pointer transition-all duration-300 ${highlightedDishId === item.id ? "bg-primary-orange/5 ring-2 ring-[#EB590E] ring-inset dark:bg-accent-orange/30/20" : ""}`}
                             onClick={() => handleItemClick(item)}
                           >
                             {/* Left Side - Details */}
@@ -2501,7 +2500,7 @@ function RestaurantDetailsContent() {
                               {isRecommendedItem(item) && (
                                 <div className="flex items-center gap-2 mt-1">
                                   <div className="h-1.5 w-16 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                    <div className="h-full bg-[#2a8500] w-3/4"></div>
+                                    <div className="h-full bg-[#EB590E] w-3/4"></div>
                                   </div>
                                   <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">Highly reordered</span>
                                 </div>
@@ -2619,7 +2618,7 @@ function RestaurantDetailsContent() {
                                   animate={{ opacity: 1, scale: 1 }}
                                   className={`absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border font-bold px-4 py-1.5 rounded-lg shadow-md flex items-center gap-1 ${isBlocked
                                     ? 'border-gray-300 text-gray-400 cursor-not-allowed opacity-50'
-                                    : 'border-[#2a8500] text-[#2a8500] hover:bg-primary-orange/5'
+                                    : 'border-[#EB590E] text-[#EB590E] hover:bg-primary-orange/5'
                                     }`}
                                 >
                                   <button
@@ -2630,11 +2629,11 @@ function RestaurantDetailsContent() {
                                       }
                                     }}
                                     disabled={isBlocked}
-                                    className={isBlocked ? 'text-gray-400 cursor-not-allowed' : 'text-[#2a8500] hover:text-[#1f6600]'}
+                                    className={isBlocked ? 'text-gray-400 cursor-not-allowed' : 'text-[#EB590E] hover:text-[#D94F0C]'}
                                   >
                                     <Minus size={14} />
                                   </button>
-                                  <QuantityPop value={quantity} className={`mx-2 text-sm ${isBlocked ? 'text-gray-400' : ''}`} />
+                                  <span className={`mx-2 text-sm ${isBlocked ? 'text-gray-400' : ''}`}>{quantity}</span>
                                   <button
                                     onClick={(e) => {
                                       e.stopPropagation()
@@ -2643,7 +2642,7 @@ function RestaurantDetailsContent() {
                                       }
                                     }}
                                     disabled={isBlocked}
-                                    className={isBlocked ? 'text-gray-400 cursor-not-allowed' : 'text-[#2a8500] hover:text-[#1f6600]'}
+                                    className={isBlocked ? 'text-gray-400 cursor-not-allowed' : 'text-[#EB590E] hover:text-[#D94F0C]'}
                                   >
                                     <Plus size={14} className="stroke-[3px]" />
                                   </button>
@@ -2663,7 +2662,7 @@ function RestaurantDetailsContent() {
                                   disabled={isBlocked}
                                   className={`absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border font-bold px-6 py-1.5 rounded-lg shadow-md flex items-center gap-1 transition-colors ${isBlocked
                                     ? 'border-gray-300 text-gray-400 cursor-not-allowed opacity-50'
-                                    : 'border-[#2a8500] text-[#2a8500] hover:bg-primary-orange/5'
+                                    : 'border-[#EB590E] text-[#EB590E] hover:bg-primary-orange/5'
                                     }`}
                                 >
                                   ADD <Plus size={14} className="stroke-[3px]" />
@@ -2744,7 +2743,7 @@ function RestaurantDetailsContent() {
                                           delete dishCardRefs.current[item.id]
                                         }
                                       }}
-                                      className={`flex gap-4 p-4 border-b border-gray-100 last:border-none relative cursor-pointer transition-all duration-300 ${highlightedDishId === item.id ? "bg-primary-orange/5 ring-2 ring-[#2a8500] ring-inset dark:bg-accent-orange/30/20" : ""}`}
+                                      className={`flex gap-4 p-4 border-b border-gray-100 last:border-none relative cursor-pointer transition-all duration-300 ${highlightedDishId === item.id ? "bg-primary-orange/5 ring-2 ring-[#EB590E] ring-inset dark:bg-accent-orange/30/20" : ""}`}
                                       onClick={() => handleItemClick(item)}
                                     >
                                       {/* Left Side - Details */}
@@ -2769,7 +2768,7 @@ function RestaurantDetailsContent() {
                                         {isRecommendedItem(item) && (
                                           <div className="flex items-center gap-2 mt-1">
                                             <div className="h-1.5 w-16 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                              <div className="h-full bg-[#2a8500] w-3/4"></div>
+                                              <div className="h-full bg-[#EB590E] w-3/4"></div>
                                             </div>
                                             <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">Highly reordered</span>
                                           </div>
@@ -2887,7 +2886,7 @@ function RestaurantDetailsContent() {
                                             animate={{ opacity: 1, scale: 1 }}
                                             className={`absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border font-bold px-4 py-1.5 rounded-lg shadow-md flex items-center gap-1 ${isBlocked
                                               ? 'border-gray-300 text-gray-400 cursor-not-allowed opacity-50'
-                                              : 'border-[#2a8500] text-[#2a8500] hover:bg-primary-orange/5'
+                                              : 'border-[#EB590E] text-[#EB590E] hover:bg-primary-orange/5'
                                               }`}
                                           >
                                             <button
@@ -2898,11 +2897,11 @@ function RestaurantDetailsContent() {
                                                 }
                                               }}
                                               disabled={isBlocked}
-                                              className={isBlocked ? 'text-gray-400 cursor-not-allowed' : 'text-[#2a8500] hover:text-[#1f6600]'}
+                                              className={isBlocked ? 'text-gray-400 cursor-not-allowed' : 'text-[#EB590E] hover:text-[#D94F0C]'}
                                             >
                                               <Minus size={14} />
                                             </button>
-                                            <QuantityPop value={quantity} className={`mx-2 text-sm ${isBlocked ? 'text-gray-400' : ''}`} />
+                                            <span className={`mx-2 text-sm ${isBlocked ? 'text-gray-400' : ''}`}>{quantity}</span>
                                             <button
                                               onClick={(e) => {
                                                 e.stopPropagation()
@@ -2911,7 +2910,7 @@ function RestaurantDetailsContent() {
                                                 }
                                               }}
                                               disabled={isBlocked}
-                                              className={isBlocked ? 'text-gray-400 cursor-not-allowed' : 'text-[#2a8500] hover:text-[#1f6600]'}
+                                              className={isBlocked ? 'text-gray-400 cursor-not-allowed' : 'text-[#EB590E] hover:text-[#D94F0C]'}
                                             >
                                               <Plus size={14} className="stroke-[3px]" />
                                             </button>
@@ -2931,7 +2930,7 @@ function RestaurantDetailsContent() {
                                             disabled={isBlocked}
                                             className={`absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border font-bold px-6 py-1.5 rounded-lg shadow-md flex items-center gap-1 transition-colors ${isBlocked
                                               ? 'border-gray-300 text-gray-400 cursor-not-allowed opacity-50'
-                                              : 'border-[#2a8500] text-[#2a8500] hover:bg-primary-orange/5'
+                                              : 'border-[#EB590E] text-[#EB590E] hover:bg-primary-orange/5'
                                               }`}
                                           >
                                             ADD <Plus size={14} className="stroke-[3px]" />
@@ -2960,7 +2959,7 @@ function RestaurantDetailsContent() {
         <div className="border-t border-gray-150 dark:border-zinc-800 pt-6">
           <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>Customer Reviews</span>
-            <span className="text-xs bg-[#FFF1E8] text-[#2a8500] px-2 py-0.5 rounded-full font-bold">Real database</span>
+            <span className="text-xs bg-[#FFF1E8] text-[#EB590E] px-2 py-0.5 rounded-full font-bold">Real database</span>
           </h2>
           
           {loadingReviews ? (
@@ -2975,7 +2974,7 @@ function RestaurantDetailsContent() {
                 <div key={review.id} className="p-4 bg-white dark:bg-[#1a1a1a] rounded-2xl border border-gray-105 dark:border-gray-800 shadow-xs space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="h-8 w-8 rounded-full bg-[#FFF1E8] flex items-center justify-center text-[#2a8500] font-black text-xs">
+                      <div className="h-8 w-8 rounded-full bg-[#FFF1E8] flex items-center justify-center text-[#EB590E] font-black text-xs">
                         {review.userName.charAt(0).toUpperCase()}
                       </div>
                       <div>
@@ -3027,11 +3026,11 @@ function RestaurantDetailsContent() {
       {!showFilterSheet && !showMenuSheet && !showMenuOptionsSheet && (
         <div className="sticky dark:bg-[#1a1a1a] bottom-4 flex justify-end px-4 z-50 mt-auto">
           <Button
-            className="bg-[#1a1a1a] dark:bg-[#2a8500] hover:bg-black dark:hover:bg-[#1f6600] text-white flex items-center gap-2 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/10 dark:border-[#2a8500]/20 px-6 py-6 rounded-full font-bold transform transition-all duration-300 hover:scale-110 active:scale-95 group"
+            className="bg-[#1a1a1a] dark:bg-[#EB590E] hover:bg-black dark:hover:bg-[#D94F0C] text-white flex items-center gap-2 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/10 dark:border-[#EB590E]/20 px-6 py-6 rounded-full font-bold transform transition-all duration-300 hover:scale-110 active:scale-95 group"
             size="lg"
             onClick={() => setShowMenuSheet(true)}
           >
-            <Utensils className="h-5 w-5 text-[#2a8500] dark:text-white group-hover:rotate-12 transition-transform" />
+            <Utensils className="h-5 w-5 text-[#EB590E] dark:text-white group-hover:rotate-12 transition-transform" />
             <span className="tracking-wide">MENU</span>
           </Button>
         </div>
@@ -3116,7 +3115,7 @@ function RestaurantDetailsContent() {
                   {/* Close Button */}
                   <div className="border-t border-gray-200 dark:border-gray-800 px-4 py-4 bg-white dark:bg-[#1a1a1a]">
                     <Button
-                      className="w-full bg-[#1a1a1a] dark:bg-[#2a8500] hover:bg-[#2a8500] dark:hover:bg-[#1f6600] text-white border-0 flex items-center justify-center gap-2 py-6 rounded-xl font-bold transition-all shadow-lg"
+                      className="w-full bg-[#1a1a1a] dark:bg-[#EB590E] hover:bg-[#EB590E] dark:hover:bg-[#D94F0C] text-white border-0 flex items-center justify-center gap-2 py-6 rounded-xl font-bold transition-all shadow-lg"
                       onClick={() => setShowMenuSheet(false)}
                     >
                       <X className="h-5 w-5" />
@@ -3251,7 +3250,7 @@ function RestaurantDetailsContent() {
                           }))
                         }
                         className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border-2 transition-all w-full ${filters.highlyReordered
-                          ? "border-[#2a8500] dark:border-[#2a8500] bg-[#FFF2EB] dark:bg-[#2a8500]/20 text-[#2a8500] dark:text-[#2a8500]"
+                          ? "border-[#EB590E] dark:border-[#EB590E] bg-[#FFF2EB] dark:bg-[#EB590E]/20 text-[#EB590E] dark:text-[#EB590E]"
                           : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#2a2a2a] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"
                           }`}
                       >
@@ -3297,7 +3296,7 @@ function RestaurantDetailsContent() {
                       Clear All
                     </button>
                     <Button
-                      className="bg-[#2a8500] hover:bg-[#1f6600] text-white px-6 py-2.5 rounded-lg font-bold"
+                      className="bg-[#EB590E] hover:bg-[#D94F0C] text-white px-6 py-2.5 rounded-lg font-bold"
                       onClick={() => setShowFilterSheet(false)}
                     >
                       Apply {activeFilterCount > 0 && `(${activeFilterCount})`}
@@ -3356,9 +3355,9 @@ function RestaurantDetailsContent() {
                             className="p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#2a2a2a]"
                           >
                             {outlet?.isNearest && (
-                              <div className="flex items-center gap-1.5 mb-2 px-2 py-1 bg-[#FFF2EB] dark:bg-[#2a8500]/20 rounded-md">
-                                <Zap className="h-3.5 w-3.5 text-[#2a8500] dark:text-[#2a8500] fill-[#2a8500] dark:fill-[#2a8500]" />
-                                <span className="text-xs font-semibold text-[#2a8500] dark:text-[#2a8500]">
+                              <div className="flex items-center gap-1.5 mb-2 px-2 py-1 bg-[#FFF2EB] dark:bg-[#EB590E]/20 rounded-md">
+                                <Zap className="h-3.5 w-3.5 text-[#EB590E] dark:text-[#EB590E] fill-[#EB590E] dark:fill-[#EB590E]" />
+                                <span className="text-xs font-semibold text-[#EB590E] dark:text-[#EB590E]">
                                   Nearest available outlet
                                 </span>
                               </div>
@@ -3511,7 +3510,7 @@ function RestaurantDetailsContent() {
                   {/* Done Button */}
                   <div className="border-t border-gray-200 dark:border-gray-800 px-4 py-4">
                     <Button
-                      className="w-full bg-[#2a8500] hover:bg-[#1f6600] text-white py-3 rounded-lg font-bold"
+                      className="w-full bg-[#EB590E] hover:bg-[#D94F0C] text-white py-3 rounded-lg font-bold"
                       onClick={() => {
                         setShowManageCollections(false)
                       }}
@@ -3693,7 +3692,7 @@ function RestaurantDetailsContent() {
                           ? 'text-gray-400 dark:text-gray-600'
                           : 'text-gray-900 dark:text-white'
                           }`}>
-                          <QuantityPop value={getDishQuantity(selectedItem, selectedVariantId)} />
+                          {getDishQuantity(selectedItem, selectedVariantId)}
                         </span>
                         <button
                           onClick={(e) => {
@@ -3720,7 +3719,7 @@ function RestaurantDetailsContent() {
                       <Button
                         className={`flex-1 h-[44px] rounded-lg font-semibold flex items-center justify-center gap-2 ${isSelectedItemBlocked
                           ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-600 cursor-not-allowed opacity-50'
-                          : 'bg-[#2a8500] hover:bg-[#1f6600] text-white'
+                          : 'bg-red-500 hover:bg-red-600 text-white'
                           }`}
                         onClick={(e) => {
                           if (!isSelectedItemBlocked) {
@@ -3862,7 +3861,7 @@ function RestaurantDetailsContent() {
                   {/* Confirm Button - Fixed at bottom */}
                   <div className="px-4 pb-4 pt-2 border-t border-gray-100">
                     <Button
-                      className="w-full bg-[#2a8500] hover:bg-[#1f6600] text-white py-3 rounded-lg font-semibold"
+                      className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg font-semibold"
                       onClick={() => {
                         setShowScheduleSheet(false)
                         // Handle schedule confirmation
@@ -3931,7 +3930,7 @@ function RestaurantDetailsContent() {
                             </div>
                           </div>
                           <Button
-                            className="bg-[#2a8500] hover:bg-[#1f6600] text-white text-sm px-4 py-2 rounded-lg whitespace-nowrap"
+                            className="bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg whitespace-nowrap"
                             onClick={() => {
                               // Handle add gold
                             }}
@@ -4017,7 +4016,7 @@ function RestaurantDetailsContent() {
                   {/* Close Button */}
                   <div className="border-t border-gray-200 dark:border-gray-800 px-4 py-4 bg-white dark:bg-[#1a1a1a]">
                     <Button
-                      className="w-full bg-[#1a1a1a] dark:bg-[#2a8500] hover:bg-[#2a8500] dark:hover:bg-[#1f6600] text-white border-0 flex items-center justify-center gap-2 py-6 rounded-xl font-bold transition-all shadow-lg"
+                      className="w-full bg-[#1a1a1a] dark:bg-[#EB590E] hover:bg-[#EB590E] dark:hover:bg-[#D94F0C] text-white border-0 flex items-center justify-center gap-2 py-6 rounded-xl font-bold transition-all shadow-lg"
                       onClick={() => setShowOffersSheet(false)}
                     >
                       <X className="h-5 w-5" />

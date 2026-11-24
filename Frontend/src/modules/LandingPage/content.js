@@ -46,9 +46,9 @@ export const AISLES = [
 ]
 
 export const STEPS = [
-  { title: 'Choose', text: 'Pick dishes from a restaurant or fill a basket from a store near you.' },
-  { title: 'Pay your way', text: 'Pay online, or in cash where the restaurant or store allows it.' },
-  { title: 'Follow it home', text: 'See your order being prepared and watch the rider on the map.' },
+  { title: 'Choose', animation: 'searching', text: 'Pick dishes from a restaurant or fill a basket from a store near you.' },
+  { title: 'Pay your way', animation: 'order-placed', once: true, text: 'Pay online, or in cash where the restaurant or store allows it.' },
+  { title: 'Follow it home', animation: 'scooter', text: 'See your order being prepared and watch the rider on the map.' },
 ]
 
 export const PARTNERS = [

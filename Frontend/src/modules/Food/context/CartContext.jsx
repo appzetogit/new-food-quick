@@ -1,6 +1,5 @@
 // src/context/cart-context.jsx
 import { createContext, useContext, useEffect, useMemo, useState } from "react"
-import { toast } from "sonner"
 import { buildCartLineId } from "@food/utils/foodVariants"
 import {
   clampOrderQuantity,
@@ -164,14 +163,6 @@ const resolveCartEntryId = (items, itemId, variantId = "") => {
   return preferredId
 }
 
-/** Does this line belong with what is already in the cart? One restaurant at a time. */
-const sameRestaurant = (a, b) => {
-  const name = (x) => String(x?.restaurant || "").trim().toLowerCase()
-  if (name(a) && name(b)) return name(a) === name(b)
-  if (a?.restaurantId && b?.restaurantId) return String(a.restaurantId) === String(b.restaurantId)
-  return true
-}
-
 export function CartProvider({ children }) {
   // Safe init (works with SSR and bad JSON)
   const [cart, setCart] = useState(() => {
@@ -333,32 +324,7 @@ export function CartProvider({ children }) {
     return { ok: true }
   }
 
-  /** A removed line can be put back, where it was, for a few seconds. */
-  const offerUndo = (line, index) => {
-    if (!line) return
-    toast(`${line.name} removed`, {
-      id: `cart-removed-${line.id}`,
-      duration: 5000,
-      action: {
-        label: "Undo",
-        onClick: () =>
-          setCart((prev) => {
-            const safePrev = normalizeCartData(prev)
-            // Added again meanwhile, or the cart moved on to another restaurant.
-            if (safePrev.some((i) => i.id === line.id)) return safePrev
-            if (safePrev.length > 0 && !sameRestaurant(safePrev[0], line)) return safePrev
-            const next = [...safePrev]
-            next.splice(Math.min(index, next.length), 0, line)
-            return next
-          }),
-      },
-    })
-  }
-
   const removeFromCart = (itemId, sourcePosition = null, productInfo = null) => {
-    const current = normalizeCartData(cart)
-    const index = current.findIndex((i) => i.id === resolveCartEntryId(current, itemId))
-    offerUndo(current[index], index)
     setCart((prev) => {
       const safePrev = normalizeCartData(prev)
       const resolvedItemId = resolveCartEntryId(safePrev, itemId)
@@ -386,7 +352,6 @@ export function CartProvider({ children }) {
     const cartEntry = safeCart.find((i) => i.id === resolvedItemId)
     // Below the item's minimum there is no valid line left, so drop it.
     if (quantity <= 0 || isBelowMinimumOrderQuantity(quantity, cartEntry)) {
-      offerUndo(cartEntry, safeCart.indexOf(cartEntry))
       setCart((prev) => {
         const safePrev = normalizeCartData(prev)
         const itemToRemove = safePrev.find((i) => i.id === resolvedItemId)
@@ -573,7 +538,7 @@ export function CartProvider({ children }) {
     }))
     
     const itemCount = safeCart.reduce((total, item) => total + (item.quantity || 0), 0)
-    const total = safeCart.reduce((sum, item) => sum + ((item.price || 0) + (item.addonsTotal || 0)) * (item.quantity || 0), 0)
+    const total = safeCart.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 0), 0)
     
     return {
       items,

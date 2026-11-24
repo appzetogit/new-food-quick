@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import LottieView from '../../shared/lottie/LottieView'
 
 const prefersStill = () =>
   typeof window === 'undefined' || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
@@ -68,6 +69,37 @@ export function Leaves() {
           <path d="M3 21C3 10 10 3 21 3c0 11-7 18-18 18Z" fill={i % 2 ? '#59c414' : '#b6f23c'} />
         </svg>
       ))}
+    </div>
+  )
+}
+
+/** A Lottie that is only fetched once its place is close to the screen. */
+export function InViewLottie({ name, loop, className }) {
+  const ref = useRef(null)
+  const [near, setNear] = useState(() => typeof IntersectionObserver !== 'function')
+  useEffect(() => {
+    if (near || !ref.current) return undefined
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setNear(true)
+    }, { rootMargin: '120px' })
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [near])
+  return (
+    <div ref={ref} aria-hidden className={className}>
+      {near && <LottieView name={name} loop={loop} className="h-full w-full" />}
+    </div>
+  )
+}
+
+/** Groceries hopping into the basket, one after another. */
+export function BasketFill({ photos }) {
+  return (
+    <div aria-hidden className="lp-basket">
+      {photos.map((src, i) => (
+        <img key={src} src={src} alt="" loading="lazy" className="lp-basket__item" style={{ '--i': i }} />
+      ))}
+      <InViewLottie name="empty-basket" className="lp-basket__basket" />
     </div>
   )
 }

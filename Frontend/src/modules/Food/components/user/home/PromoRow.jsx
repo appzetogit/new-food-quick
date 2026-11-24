@@ -71,7 +71,7 @@ export default function PromoRow({ handleVegModeChange, navigate, isVegMode, tog
 
             {/* Refined Typography */}
             <div className="flex flex-col items-center text-center w-full">
-              <span className="text-[13px] sm:text-[14px] font-black text-[#0f172a] dark:text-gray-100 tracking-tight leading-tight mb-0.5 group-hover:text-[#2a8500] transition-colors">
+              <span className="text-[13px] sm:text-[14px] font-black text-[#0f172a] dark:text-gray-100 tracking-tight leading-tight mb-0.5 group-hover:text-[#d82c23] transition-colors">
                 {promo.value}
               </span>
               <span className="text-[10px] sm:text-[11px] font-bold text-[#e11d48] dark:text-rose-400 capitalize whitespace-nowrap tracking-wide">

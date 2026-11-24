@@ -43,7 +43,6 @@ import { useUserNotifications } from "@food/hooks/useUserNotifications"
 import circleIcon from "@food/assets/circleicon.png"
 import { RESTAURANT_PIN_SVG, CUSTOMER_PIN_SVG, RIDER_BIKE_SVG } from "@food/constants/mapIcons"
 import { addonsLabel, unitPriceWithAddons } from "@food/utils/orderItemPricing"
-import LottieView from "@/shared/lottie/LottieView"
 
 // Fallback definitions in case imports fail at runtime or are shadowed
 const DEFAULT_CUSTOMER_PIN = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="#10B981"><path d="M12 2C8.13 2 5 5.13 5 9c0 4.17 4.42 9.92 6.24 12.11.4.48 1.08.48 1.52 0C14.58 18.92 19 13.17 19 9c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/><circle cx="12" cy="9" r="3" fill="#FFFFFF"/></svg>`;
@@ -1244,7 +1243,7 @@ export default function OrderTracking() {
           <h1 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 dark:text-white">Order Not Found</h1>
           <p className="text-gray-600 dark:text-gray-400 mb-6">{error || 'The order you\'re looking for doesn\'t exist.'}</p>
           <Link to="/user/orders">
-            <Button className="bg-[#2a8500] hover:bg-[#D44D0D] text-white">Back to Orders</Button>
+            <Button className="bg-[#EB590E] hover:bg-[#D44D0D] text-white">Back to Orders</Button>
           </Link>
         </div>
       </AnimatedPage>
@@ -1324,11 +1323,6 @@ export default function OrderTracking() {
     orderStatus === "cancelled" ||
     isFoodOrderCancelledStatus(order?.status)
 
-  const statusAnimation =
-    isDeliveredOrder || isCancelledOrder
-      ? null
-      : { preparing: "cooking", on_way: "scooter" }[orderStatus]
-
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-[#0a0a0a]">
       {/* Order Confirmed Modal */}
@@ -1369,7 +1363,7 @@ export default function OrderTracking() {
                 transition={{ delay: 1.5 }}
                 className="mt-8"
               >
-                <div className="w-8 h-8 border-2 border-[#2a8500] border-t-transparent rounded-full animate-spin mx-auto" />
+                <div className="w-8 h-8 border-2 border-[#EB590E] border-t-transparent rounded-full animate-spin mx-auto" />
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">Loading order details...</p>
               </motion.div>
             </motion.div>
@@ -1426,7 +1420,7 @@ export default function OrderTracking() {
         <div className="bg-white dark:bg-zinc-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-zinc-800 relative overflow-hidden">
           <div className="flex items-start justify-between relative z-10">
             <div>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-orange/5 dark:bg-accent-orange/30/30 text-[#2a8500] mb-3">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-orange/5 dark:bg-accent-orange/30/30 text-[#EB590E] mb-3">
                 {currentStatus.title}
               </span>
               <h2 className="text-2xl font-black text-gray-900 dark:text-white leading-tight">
@@ -1444,9 +1438,6 @@ export default function OrderTracking() {
                 </p>
               )}
             </div>
-            {statusAnimation && (
-              <LottieView name={statusAnimation} className="w-16 h-16 sm:w-20 sm:h-20 ml-auto mr-2" />
-            )}
             <motion.button
               onClick={handleRefresh}
               className="p-2 bg-gray-50 dark:bg-zinc-800 rounded-full"
@@ -1523,7 +1514,7 @@ export default function OrderTracking() {
                   <div className="w-14 h-14 rounded-2xl bg-gray-100 dark:bg-zinc-800 flex items-center justify-center border-2 border-white dark:border-zinc-800">
                     <Store className="w-8 h-8 text-gray-400 dark:text-gray-500" />
                   </div>
-                  <div className="absolute -bottom-1 -right-1 bg-[#2a8500] w-4 h-4 rounded-full border-2 border-white dark:border-zinc-900" />
+                  <div className="absolute -bottom-1 -right-1 bg-[#EB590E] w-4 h-4 rounded-full border-2 border-white dark:border-zinc-900" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 dark:text-white">

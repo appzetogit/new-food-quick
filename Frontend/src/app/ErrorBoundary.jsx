@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import LottieView from '../shared/lottie/LottieView.jsx'
 
 /**
  * A page that crashes shows a way back instead of a blank screen.
@@ -25,11 +24,7 @@ export default class ErrorBoundary extends Component {
     const offline = typeof navigator !== 'undefined' && navigator.onLine === false
     return (
       <div role="alert" className="flex min-h-screen flex-col items-center justify-center gap-3 bg-white px-6 text-center text-slate-900">
-        {offline ? (
-          <LottieView name="offline" className="h-40 w-40" />
-        ) : (
-          <img src="/favicon.png" alt="" width="64" height="64" />
-        )}
+        <img src="/favicon.png" alt="" width="64" height="64" />
         <h1 className="mt-2 text-2xl font-bold text-[#061a5c]">{offline ? 'You are offline' : 'This page did not load'}</h1>
         <p className="max-w-sm text-slate-600">
           {offline ? 'Check your connection, then try again.' : 'Something went wrong on our side. Try again, or go back to the start.'}

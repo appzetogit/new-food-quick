@@ -4,7 +4,6 @@ import { useCart } from "@food/context/CartContext"
 import { isModuleAuthenticated } from "@food/utils/auth"
 import { useNavigate, useLocation } from "react-router-dom"
 import { toast } from "sonner"
-import QuantityPop from "./QuantityPop"
 
 export default function AddToCartButton({ item, className = "" }) {
   const { addToCart, isInCart, getCartItem, updateQuantity } = useCart()
@@ -23,14 +22,7 @@ export default function AddToCartButton({ item, className = "" }) {
       return
     }
 
-    const r = e.currentTarget.getBoundingClientRect()
-    const result = addToCart(item, {
-      viewportX: r.left + r.width / 2,
-      viewportY: r.top + r.height / 2,
-      scrollX: window.scrollX,
-      scrollY: window.scrollY,
-    })
-    if (result?.ok === false) toast.error(result.error)
+    addToCart(item)
   }
 
   const handleIncrease = (e) => {
@@ -58,7 +50,7 @@ export default function AddToCartButton({ item, className = "" }) {
             <Minus className="h-4 w-4" />
           </Button>
           <span className="px-1 text-sm font-semibold min-w-[1rem] text-center">
-            <QuantityPop value={cartItem?.quantity || 0} />
+            {cartItem?.quantity || 0}
           </span>
           <Button
             variant="ghost"

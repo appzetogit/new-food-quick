@@ -453,12 +453,3 @@ html.dark {
   background-size: 200% 200%;
   animation: movingDuotone 14s ease-in-out infinite;
 }
-
-/* ── Aodo customer app ─────────────────────────────────────────────────────── */
-.aodo-user {
-  --color-primary-orange: #2a8500;
-  --color-accent-orange: #59c414;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .aodo-user button:not(:disabled):active { scale: 0.96; }
-}

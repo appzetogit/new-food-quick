@@ -4,7 +4,7 @@ import { UtensilsCrossed, ChevronRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const CookingAnimation = memo(() => (
-  <div className="relative w-12 h-12 flex items-center justify-center rounded-xl bg-primary-orange/5 border border-primary-orange/10 overflow-visible shadow-[0_4px_15px_rgba(42,133,0,0.15)] shrink-0">
+  <div className="relative w-12 h-12 flex items-center justify-center rounded-xl bg-primary-orange/5 border border-primary-orange/10 overflow-visible shadow-[0_4px_15px_rgba(235,89,14,0.15)] shrink-0">
     <div className="absolute -top-3 flex gap-1.5">
       <motion.div animate={{ opacity: [0, 0.8, 0], y: [0, -8, -12], scale: [0.8, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0, ease: "easeOut" }} className="w-1.5 h-3 bg-primary-orange/80/60 rounded-full blur-[1px]" />
       <motion.div animate={{ opacity: [0, 0.8, 0], y: [0, -10, -15], scale: [0.8, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.5, ease: "easeOut" }} className="w-1.5 h-3 bg-primary-orange/80/60 rounded-full blur-[1px]" />
@@ -357,7 +357,7 @@ function OrderTrackingCardInner({ hasBottomNav = true }) {
               `/food/user/orders/${activeOrder.id || activeOrder._id || activeOrder.orderId}`,
             )
           }
-          className="relative bg-white/95 backdrop-blur-xl rounded-[20px] p-4 shadow-[0_8px_30px_rgba(42,133,0,0.15)] border border-primary-orange/10/60 overflow-visible cursor-pointer group"
+          className="relative bg-white/95 backdrop-blur-xl rounded-[20px] p-4 shadow-[0_8px_30px_rgba(235,89,14,0.15)] border border-primary-orange/10/60 overflow-visible cursor-pointer group"
         >
           {/* Subtle gradient background mesh */}
           <div className="absolute inset-0 bg-gradient-to-r from-primary-orange/5/50 via-white/40 to-white/80 opacity-60 pointer-events-none rounded-[20px]" />
@@ -380,7 +380,7 @@ function OrderTrackingCardInner({ hasBottomNav = true }) {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#061a5c] to-[#0c2fa3] shadow-lg shadow-primary-orange/50/20 rounded-xl px-4 py-2 shrink-0 flex flex-col items-center justify-center border border-primary-orange/20">
+            <div className="bg-gradient-to-br from-[#EB590E] to-[#D94E0A] shadow-lg shadow-primary-orange/50/20 rounded-xl px-4 py-2 shrink-0 flex flex-col items-center justify-center border border-primary-orange/20">
               <p className="text-primary-orange/5 text-[10px] font-bold uppercase tracking-wider opacity-95 leading-tight mb-[2px]">
                 arriving in
               </p>

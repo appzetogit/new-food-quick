@@ -47,7 +47,7 @@ export default function Privacy() {
     return (
       <div className="min-h-screen bg-white dark:bg-[#0a0a0a] flex items-center justify-center p-6">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-10 w-10 animate-spin text-[#59c414]" />
+          <Loader2 className="h-10 w-10 animate-spin text-[#ff6d00]" />
           <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">Loading...</p>
         </div>
       </div>
@@ -88,12 +88,12 @@ export default function Privacy() {
                 prose-headings:font-black prose-headings:text-gray-900 dark:prose-headings:text-white
                 prose-p:text-gray-600 dark:prose-p:text-gray-400 prose-p:leading-relaxed
                 prose-strong:text-gray-900 dark:prose-strong:text-white
-                prose-a:text-[#59c414] dark:prose-a:text-[#2a8500]
+                prose-a:text-[#ff6d00] dark:prose-a:text-[#EB590E]
                 prose-li:text-gray-600 dark:prose-li:text-gray-400
                 text-sm leading-relaxed text-gray-600 dark:text-gray-400
                 [&_h1]:text-2xl [&_h1]:font-black [&_h1]:text-gray-900 dark:[&_h1]:text-white [&_h1]:mb-2
                 [&_h3]:text-lg [&_h3]:font-black [&_h3]:text-gray-900 dark:[&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-2
-                [&_p]:mb-3 [&_strong]:text-gray-900 dark:[&_strong]:text-white [&_a]:text-[#59c414] [&_a]:underline
+                [&_p]:mb-3 [&_strong]:text-gray-900 dark:[&_strong]:text-white [&_a]:text-[#ff6d00] [&_a]:underline
                 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4 [&_li]:mb-1.5"
               dangerouslySetInnerHTML={{ __html: privacyData.content }}
             />

@@ -5,7 +5,7 @@ import apiClient from '@food/api'
 import api from '../Taxi/shared/api/axiosInstance'
 import logo from './assets/aodo-logo.webp'
 import { AISLES, BRAND, CRAVINGS, FAQS, FOOD_HOME, PARTNERS, PHOTOS, STEPS, photo, searchPath } from './content'
-import { Leaves, RideLine, useCycle, useReveals, useScrolled } from './motion'
+import { BasketFill, InViewLottie, Leaves, RideLine, useCycle, useReveals, useScrolled } from './motion'
 import './landing.css'
 
 const NAV = [
@@ -207,6 +207,7 @@ function Groceries({ playStore, appStore }) {
         </ul>
         <div className="lp-reveal relative mt-8 overflow-hidden rounded-[28px] bg-[#061a5c] text-white md:grid md:grid-cols-2">
           <div className="p-8 sm:p-12">
+            <BasketFill photos={AISLES.slice(0, 4).map((a) => photo(a.photo, 120, 120))} />
             <h3 className="text-2xl font-extrabold sm:text-4xl">Fruit and veg, <span className="text-[#b6f23c]">picked fresh.</span></h3>
             <p className="mt-3 max-w-md text-blue-100">Fill your basket from stores near you and have it brought home.</p>
             {(playStore || appStore) ? (
@@ -234,7 +235,10 @@ function HowItWorks() {
         <ol className="mt-4 grid gap-5 md:grid-cols-3">
           {STEPS.map((s, i) => (
             <li key={s.title} style={{ '--i': i * 3 }} className="lp-reveal rounded-3xl bg-slate-50 p-7">
-              <span aria-hidden className="flex h-11 w-11 items-center justify-center rounded-full bg-[#b6f23c] text-lg font-extrabold text-[#061a5c]">{i + 1}</span>
+              <div className="flex items-center justify-between">
+                <span aria-hidden className="flex h-11 w-11 items-center justify-center rounded-full bg-[#b6f23c] text-lg font-extrabold text-[#061a5c]">{i + 1}</span>
+                <InViewLottie name={s.animation} loop={!s.once} className="-my-3 h-28 w-28" />
+              </div>
               <h3 className="mt-5 text-xl font-bold text-[#061a5c]">{s.title}</h3>
               <p className="mt-2 text-slate-600">{s.text}</p>
             </li>

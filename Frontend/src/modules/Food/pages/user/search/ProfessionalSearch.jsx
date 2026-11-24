@@ -15,7 +15,6 @@ import { useLocation as useGeoLocation } from "@food/hooks/useLocation"
 import { useZone } from "@food/hooks/useZone"
 import { searchAPI } from "@/services/api"
 import { motion, AnimatePresence } from "framer-motion"
-import LottieView from "@/shared/lottie/LottieView"
 
 // Helper to resolve media URLs consistently
 const getMediaUrl = (url) => {
@@ -288,7 +287,7 @@ export default function ProfessionalSearch() {
               placeholder="Search for restaurants or dishes..." 
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="pl-10 pr-10 h-11 bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700/60 focus:ring-2 focus:ring-[#59c414] focus:border-transparent rounded-xl shadow-sm text-sm transition-all"
+              className="pl-10 pr-10 h-11 bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700/60 focus:ring-2 focus:ring-[#ff6d00] focus:border-transparent rounded-xl shadow-sm text-sm transition-all"
             />
             {query && (
               <button type="button" onClick={handleClear} className="absolute right-10 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 z-10 active:scale-90">
@@ -298,7 +297,7 @@ export default function ProfessionalSearch() {
             <button 
               type="button"
               onClick={handleVoiceSearch}
-              className={`absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full transition-all z-10 ${isListening ? 'text-[#59c414] scale-125 animate-pulse' : 'text-slate-400'}`}
+              className={`absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full transition-all z-10 ${isListening ? 'text-[#ff6d00] scale-125 animate-pulse' : 'text-slate-400'}`}
             >
               <Mic className="w-5 h-5" />
             </button>
@@ -314,7 +313,7 @@ export default function ProfessionalSearch() {
             setSearchParams({ q: query, ...(selectedCategoryId ? { cat: selectedCategoryId } : {}) }, { replace: true })
             performSearch(query, selectedCategoryId)
           }} className="relative">
-            <button type="submit" className="absolute left-4 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-[#59c414] z-10 transition-colors">
+            <button type="submit" className="absolute left-4 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-[#ff6d00] z-10 transition-colors">
               <Search className="w-5 h-5" />
             </button>
             <Input 
@@ -322,7 +321,7 @@ export default function ProfessionalSearch() {
               placeholder="Search for restaurants or dishes..." 
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="pl-12 pr-12 h-12 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800/80 focus:ring-2 focus:ring-[#59c414] focus:border-transparent rounded-2xl shadow-sm text-sm transition-all hover:border-slate-350"
+              className="pl-12 pr-12 h-12 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800/80 focus:ring-2 focus:ring-[#ff6d00] focus:border-transparent rounded-2xl shadow-sm text-sm transition-all hover:border-slate-350"
             />
             {query && (
               <button type="button" onClick={handleClear} className="absolute right-12 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 transition-colors z-10 active:scale-90">
@@ -332,7 +331,7 @@ export default function ProfessionalSearch() {
             <button 
               type="button"
               onClick={handleVoiceSearch}
-              className={`absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full transition-all z-10 ${isListening ? 'text-[#59c414] scale-125 animate-pulse' : 'text-slate-400'}`}
+              className={`absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full transition-all z-10 ${isListening ? 'text-[#ff6d00] scale-125 animate-pulse' : 'text-slate-400'}`}
             >
               <Mic className="w-5 h-5" />
             </button>
@@ -545,7 +544,9 @@ export default function ProfessionalSearch() {
             {/* Empty State */}
             {!loading && !(hasEffectiveCoordinates && (zoneLoading || zoneStatus === "loading")) && results.restaurants.length === 0 && results.dishes.length === 0 && (
               <div className="flex flex-col items-center justify-center py-20 text-center">
-                 <LottieView name="searching" className="w-40 h-40 mb-4" />
+                 <div className="w-20 h-20 bg-slate-100 dark:bg-zinc-900 rounded-full flex items-center justify-center mb-4">
+                    <Search className="w-8 h-8 text-slate-300" />
+                 </div>
                  <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">We couldn't find any results</h2>
                  <p className="text-slate-500 text-sm max-w-xs">Maybe try searching for something else or check your spelling</p>
                  <Button variant="outline" onClick={handleClear} className="mt-6 rounded-xl border-rose-500 text-rose-500 hover:bg-rose-50">

@@ -61,8 +61,8 @@ export default function HomeHeader({
 
   const isTaxi = routeLocation.pathname.includes('/taxi');
   const theme = {
-    activeBg: isTaxi ? 'bg-[#2563eb]' : 'bg-[#2a8500]',
-    activeHex: isTaxi ? '#2563eb' : '#2a8500',
+    activeBg: isTaxi ? 'bg-[#2563eb]' : 'bg-[#d82c23]',
+    activeHex: isTaxi ? '#2563eb' : '#d82c23',
     inactiveHex: isTaxi ? '#09101d' : '#6e0d09',
     containerHex: isTaxi ? '#0b1528' : '#9c1c16',
   };
@@ -187,7 +187,7 @@ export default function HomeHeader({
         
         {/* 1. Top Navigation Bar */}
         <motion.div 
-          className="flex items-center justify-between px-5 pt-6 pb-5 bg-gradient-to-r from-[#061a5c] to-[#0c2fa3] rounded-b-[24px] shadow-[0_10px_20px_rgba(6,26,92,0.15)] relative z-50 w-full max-w-2xl mx-auto"
+          className="flex items-center justify-between px-5 pt-6 pb-5 bg-gradient-to-r from-[#d82c23] to-[#ff6d00] rounded-b-[24px] shadow-[0_10px_20px_rgba(216,44,35,0.15)] relative z-50 w-full max-w-2xl mx-auto"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -197,7 +197,7 @@ export default function HomeHeader({
             className="bg-white p-2.5 rounded-[14px] border border-gray-100 shadow-[0_4px_12px_rgba(0,0,0,0.04)] cursor-pointer hover:bg-gray-50 active:scale-95 transition-all flex items-center justify-center"
             onClick={handleLocationClick}
           >
-            <MapPin className={`h-5 w-5 ${isTaxi ? 'text-blue-600' : 'text-[#2a8500]'}`} />
+            <MapPin className={`h-5 w-5 ${isTaxi ? 'text-blue-600' : 'text-[#d82c23]'}`} />
           </div>
 
           {/* Center: Service Tabs (acting as logo) */}
@@ -206,7 +206,7 @@ export default function HomeHeader({
               onClick={() => navigate('/food/user')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition-all duration-300 ${
                 routeLocation.pathname.includes('/food')
-                  ? 'bg-white shadow-sm text-[#2a8500]'
+                  ? 'bg-white shadow-sm text-[#d82c23]'
                   : 'text-gray-500 hover:text-gray-700'
               }`}
             >
@@ -327,7 +327,7 @@ export default function HomeHeader({
           }`}
         >
           <motion.div
-            className={`flex-1 relative p-[1.5px] rounded-full cursor-pointer group transition-all duration-300 shadow-[0_2px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(6,26,92,0.15)] bg-gradient-to-r from-[#061a5c] to-[#0c2fa3]`}
+            className={`flex-1 relative p-[1.5px] rounded-full cursor-pointer group transition-all duration-300 shadow-[0_2px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(216,44,35,0.15)] bg-gradient-to-r from-[#d82c23] to-[#ff6d00]`}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -342,7 +342,7 @@ export default function HomeHeader({
             }}
           >
             <div className="flex items-center w-full h-full bg-white rounded-full p-1.5 pl-4 pr-2">
-              <Search className={`h-[20px] w-[20px] mr-3 transition-colors duration-300 text-[#8c94a1] group-hover:text-[#59c414]`} strokeWidth={2.5} />
+              <Search className={`h-[20px] w-[20px] mr-3 transition-colors duration-300 text-[#8c94a1] group-hover:text-[#ff6d00]`} strokeWidth={2.5} />
               
               <div className="flex-1 overflow-hidden relative h-6 flex items-center mt-0.5">
                 <AnimatePresence mode="wait">
@@ -361,7 +361,7 @@ export default function HomeHeader({
               
               <div className="w-[1px] h-6 bg-gray-100 mx-3"></div>
               
-              <div className="p-2.5 rounded-full bg-[#f8f9fa] text-[#6b7280] group-hover:bg-gradient-to-br group-hover:from-orange-50 group-hover:to-red-50 group-hover:text-[#2a8500] transition-all flex items-center justify-center">
+              <div className="p-2.5 rounded-full bg-[#f8f9fa] text-[#6b7280] group-hover:bg-gradient-to-br group-hover:from-orange-50 group-hover:to-red-50 group-hover:text-[#d82c23] transition-all flex items-center justify-center">
                 <Mic className="h-[18px] w-[18px]" strokeWidth={2.5} />
               </div>
             </div>
@@ -388,7 +388,7 @@ export default function HomeHeader({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
         >
-          <div className={`relative w-full rounded-[28px] overflow-hidden shadow-[0_20px_40px_rgba(6,26,92,0.15)] bg-gradient-to-br ${isTaxi ? 'from-[#2563eb] via-[#1d4ed8] to-[#1e3a8a]' : 'from-[#061a5c] via-[#0b2a8f] to-[#03103d]'} p-6 flex items-center min-h-[190px]`}>
+          <div className={`relative w-full rounded-[28px] overflow-hidden shadow-[0_20px_40px_rgba(216,44,35,0.15)] bg-gradient-to-br ${isTaxi ? 'from-[#2563eb] via-[#1d4ed8] to-[#1e3a8a]' : 'from-[#d82c23] via-[#b3241d] to-[#7f1a14]'} p-6 flex items-center min-h-[190px]`}>
             {/* Background embellishments */}
             <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
@@ -431,7 +431,7 @@ export default function HomeHeader({
                     <div className="absolute inset-0 bg-white rounded-full shadow-[-10px_0_30px_rgba(0,0,0,0.1)] border border-gray-100"></div>
                     
                     {/* Red Inner Circle */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130px] h-[130px] bg-gradient-to-br from-[#061a5c] to-[#0c2fa3] rounded-full shadow-inner flex flex-col items-start justify-center border-[6px] border-white ml-2 pointer-events-none pl-5">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130px] h-[130px] bg-gradient-to-br from-[#d82c23] to-[#9f1239] rounded-full shadow-inner flex flex-col items-start justify-center border-[6px] border-white ml-2 pointer-events-none pl-5">
                       <span className="text-white/90 font-bold text-[9px] uppercase tracking-wider mb-0.5">Cravings??</span>
                       <span className="text-white font-black text-[12px] leading-[1.1] drop-shadow-md tracking-tight">
                         Grab your<br/>fav food

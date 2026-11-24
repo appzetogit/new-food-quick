@@ -11,7 +11,7 @@ import { Badge } from "@food/components/ui/badge"
 import { useProfile } from "@food/context/ProfileContext"
 import { toast } from "sonner"
 
-const ORANGE = "#2a8500"
+const ORANGE = "#EB590E"
 
 const getAddressId = (address) => address?.id || address?._id || ""
 
