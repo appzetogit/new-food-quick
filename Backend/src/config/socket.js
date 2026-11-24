@@ -148,7 +148,9 @@ export const initSocket = async (server) => {
             pubClient.on('error', (err) => logger.error(`Socket.IO Redis pub client: ${err.message}`));
             subClient.on('error', (err) => logger.error(`Socket.IO Redis sub client: ${err.message}`));
             await Promise.all([pubClient.connect(), subClient.connect()]);
-            io.adapter(createAdapter(pubClient, subClient));
+            // Redis channels ignore the database number, so apps sharing one Redis need
+            // their own key or they receive each other's live updates.
+            io.adapter(createAdapter(pubClient, subClient, { key: process.env.SOCKET_ADAPTER_KEY || 'socket.io' }));
             logger.info('Socket.IO Redis adapter attached for horizontal scaling');
         } catch (err) {
             logger.warn(`Socket.IO Redis adapter skipped (using in-memory): ${err.message}`);
