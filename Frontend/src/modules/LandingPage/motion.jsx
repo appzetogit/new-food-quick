@@ -81,10 +81,10 @@ export function InViewLottie({ name, loop, className }) {
     if (near || !ref.current) return undefined
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) setNear(true)
-    }, { rootMargin: '120px' })
+    }, { rootMargin: loop ? '120px' : '0px 0px -18% 0px' }) // a one-time animation waits until it is really seen
     observer.observe(ref.current)
     return () => observer.disconnect()
-  }, [near])
+  }, [near, loop])
   return (
     <div ref={ref} aria-hidden className={className}>
       {near && <LottieView name={name} loop={loop} className="h-full w-full" />}

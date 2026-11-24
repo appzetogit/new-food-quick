@@ -51,9 +51,9 @@ jobs:
       - name: Build
         working-directory: Frontend
         env:
-          VITE_API_BASE_URL: https://aodo.buytogetherindia.com/api/v1
-          VITE_SOCKET_URL: https://aodo.buytogetherindia.com
-          VITE_BACKEND_ORIGIN: https://aodo.buytogetherindia.com
+          VITE_API_BASE_URL: https://aodo.in/api/v1
+          VITE_SOCKET_URL: https://aodo.in
+          VITE_BACKEND_ORIGIN: https://aodo.in
         run: npm run build
       - uses: actions/upload-artifact@v4
         with:
