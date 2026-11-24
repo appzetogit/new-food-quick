@@ -6,12 +6,14 @@ import api from '../Taxi/shared/api/axiosInstance'
 import logo from './assets/aodo-logo.webp'
 import { AISLES, BRAND, CRAVINGS, FAQS, FOOD_HOME, PARTNERS, PHOTOS, STEPS, photo, searchPath } from './content'
 import { BasketFill, InViewLottie, Leaves, RideLine, useCycle, useReveals, useScrolled } from './motion'
+import Company from './Company'
 import './landing.css'
 
 const NAV = [
   { label: 'Food', href: '#food' },
   { label: 'Groceries', href: '#groceries' },
   { label: 'How it works', href: '#how' },
+  { label: 'About', href: '#about' },
   { label: 'Partner with us', href: '#partners' },
 ]
 
@@ -305,6 +307,7 @@ function Footer({ settings }) {
           <h3 className="font-bold">Order</h3>
           <Link to={FOOD_HOME} className={link}>Food</Link>
           <a href="#groceries" className={link}>Groceries</a>
+          <a href="#about" className={link}>About</a>
           <Link to="/support" className={link}>Help and support</Link>
         </div>
         <div className="flex flex-col gap-2.5">
@@ -369,6 +372,7 @@ export default function LandingPage() {
         <Restaurants items={restaurants} />
         <Groceries playStore={storeUrl(settings?.play_store_url)} appStore={storeUrl(settings?.app_store_url)} />
         <HowItWorks />
+        <Company wrap={WRAP} title={SECTION_TITLE} />
         <Partners />
         <Faq items={faqs} />
       </main>

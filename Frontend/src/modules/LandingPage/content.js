@@ -18,6 +18,7 @@ export const PHOTOS = {
   rider: '1617347454431-f49d7ff5c3b1',
   store: '1578916171728-46686eac8d58',
   kitchen: '1556910103-1c02745aae4d',
+  table: '1504674900247-0877df9cc836',
 }
 
 /** Opens the food app's search, which takes ?q=. */
@@ -56,6 +57,19 @@ export const PARTNERS = [
   { title: 'Stores', text: 'Sell groceries and daily essentials to homes around you.', cta: 'Open your store', to: '/partner', photo: PHOTOS.store },
   { title: 'Riders', text: 'Deliver food and groceries, and keep track of every earning.', cta: 'Ride with us', to: '/food/delivery/welcome', photo: PHOTOS.rider },
 ]
+
+export const COMPANY = `${BRAND} brings restaurant meals and everyday groceries together. Customers order from restaurants and stores near them, and delivery partners bring it home.`
+
+export const ABOUT = [
+  { title: 'For customers', text: 'Food on the website and app, groceries in the app, and order tracking on a map.' },
+  { title: 'For restaurants and stores', text: 'Their own dashboard to list items, manage orders and reach people nearby.' },
+  { title: 'For riders', text: 'Deliver food and groceries from one app, with every earning on record.' },
+]
+
+// Hidden on the page until filled in with the owner's real details and plans.
+export const OWNER = { name: '', role: '', bio: '', photo: '', phone: '', email: '' }
+// { title, text, when } -- when is optional, e.g. '2027'
+export const PLANS = []
 
 export const FAQS = [
   { question: `What can I order on ${BRAND}?`, answer: 'Meals from restaurants, and groceries and daily essentials from stores near you.' },
