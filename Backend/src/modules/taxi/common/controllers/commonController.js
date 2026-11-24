@@ -148,34 +148,13 @@ export const getLandingPageSettings = asyncHandler(async (_req, res) => {
                 linkedin: 'https://linkedin.com/company/k9rides',
                 youtube: 'https://youtube.com/k9rides'
             },
-            contact_email: 'k9bharatrides@gmail.com',
-            contact_phone: '+91 7358789910',
-            contact_address: 'Quick Drop, Siliguri, West Bengal, India',
+            contact_email: '',
+            contact_phone: '',
+            contact_address: '',
             contact_location: { lat: 26.7271, lng: 88.3953 },
-            play_store_url: '/login/services',
-            app_store_url: '/login/services',
-            faqs: [
-                {
-                    question: 'What is Quick Drop?',
-                    answer: 'Quick Drop is a unified multi-service super-app offering on-demand taxi bookings, local food ordering, courier deliveries, rentals, and airport transfers.',
-                    order: 0
-                },
-                {
-                    question: 'How do I book a ride?',
-                    answer: 'Simply log in with your phone number, select your pickup and drop locations, choose a vehicle class, and confirm your booking. A driver will be assigned immediately.',
-                    order: 1
-                },
-                {
-                    question: 'What payment methods are supported?',
-                    answer: 'We support digital payments via UPI, Credit/Debit Cards, Net Banking, and Mobile Wallets, as well as Cash on delivery/ride.',
-                    order: 2
-                },
-                {
-                    question: 'How are surge prices calculated?',
-                    answer: 'Surge pricing is dynamically applied during peak demand hours, bad weather, or heavy traffic, to balance driver supply with passenger demand.',
-                    order: 3
-                }
-            ],
+            play_store_url: '',
+            app_store_url: '',
+            faqs: [],
             pages: {
                 about_us: '<h1>About Quick Drop</h1><p>Quick Drop is a leading technology platform dedicated to providing safe, reliable, and affordable mobility solutions for everyone. Our mission is to transform urban transportation and logistics by connecting people with professional drivers and efficient services.</p>',
                 careers: '<h1>Careers at Quick Drop</h1><p>Join our team and build the future of urban mobility. We are constantly looking for talented software engineers, product managers, driver relationship experts, and support specialists to join our journey.</p>',
